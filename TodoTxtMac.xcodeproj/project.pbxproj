@@ -530,7 +530,7 @@
 			};
 			buildConfigurationList = 00B4CB9318B43E8400313DAA /* Build configuration list for PBXProject "TodoTxtMac" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
