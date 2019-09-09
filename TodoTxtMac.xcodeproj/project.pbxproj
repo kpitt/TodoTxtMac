@@ -74,13 +74,13 @@
 		00EAAB9718E0C168009CBE8C /* TTMPredicateEditorDateRowTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAAB9618E0C168009CBE8C /* TTMPredicateEditorDateRowTemplate.m */; };
 		00EAAB9A18E1CF79009CBE8C /* TTMPredicateEditorDueRowTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAAB9918E1CF79009CBE8C /* TTMPredicateEditorDueRowTemplate.m */; };
 		00EAAB9D18E1CF92009CBE8C /* TTMPredicateEditorCompletedRowTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAAB9C18E1CF92009CBE8C /* TTMPredicateEditorCompletedRowTemplate.m */; };
-		00EC5EA118E3BC920021242B /* TTMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EC5EA018E3BC920021242B /* TTMAppDelegate.m */; };
 		00F3961218C6AC010002EA3F /* TTMTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F3961118C6AC010002EA3F /* TTMTableView.m */; };
 		00F811EF18D53F7300379B99 /* TTMPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F811ED18D53F7300379B99 /* TTMPreferencesController.m */; };
 		00FA1D2818F1EF340066A437 /* FontNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 00FA1D2718F1EF340066A437 /* FontNameTransformer.m */; };
 		00FA1D2A18F1EF4C0066A437 /* RelativeDates.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00FA1D2918F1EF4C0066A437 /* RelativeDates.strings */; };
 		00FB47861A733E6100F8D2B3 /* TTMDocumentStatusBarText.m in Sources */ = {isa = PBXBuildFile; fileRef = 00FB47851A733E6100F8D2B3 /* TTMDocumentStatusBarText.m */; };
 		00FCB2F918DB64510070BD4A /* TTMFilters.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00FCB2F818DB64510070BD4A /* TTMFilters.xib */; };
+		B95836682325E83C00CA4337 /* TTMAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95836652325BC4100CA4337 /* TTMAppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -212,6 +212,8 @@
 		00FB47841A733E6100F8D2B3 /* TTMDocumentStatusBarText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMDocumentStatusBarText.h; sourceTree = "<group>"; };
 		00FB47851A733E6100F8D2B3 /* TTMDocumentStatusBarText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMDocumentStatusBarText.m; sourceTree = "<group>"; };
 		00FCB2F818DB64510070BD4A /* TTMFilters.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTMFilters.xib; sourceTree = "<group>"; };
+		B95836622325B9BF00CA4337 /* TodoTxtMac-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "TodoTxtMac-Bridging-Header.h"; path = "TodoTxtMac/TodoTxtMac-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		B95836652325BC4100CA4337 /* TTMAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTMAppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -341,6 +343,7 @@
 		00B4CBA118B43E8400313DAA /* TodoTxtMac */ = {
 			isa = PBXGroup;
 			children = (
+				B95836622325B9BF00CA4337 /* TodoTxtMac-Bridging-Header.h */,
 				00F811F618D545AF00379B99 /* Application */,
 				00165B2218DBD11400E137B8 /* Preferences */,
 				00165B2318DBD18C00E137B8 /* Filters */,
@@ -463,6 +466,7 @@
 				00EC5EA018E3BC920021242B /* TTMAppDelegate.m */,
 				002EAE5718DBD24C008E7517 /* TTMAppController.h */,
 				002EAE5818DBD24C008E7517 /* TTMAppController.m */,
+				B95836652325BC4100CA4337 /* TTMAppDelegate.swift */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -517,6 +521,7 @@
 				ORGANIZATIONNAME = "Michael Descy";
 				TargetAttributes = {
 					00B4CB9718B43E8400313DAA = {
+						LastSwiftMigration = 1030;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 0;
@@ -584,6 +589,7 @@
 				0064E6441C9CEE6600B9A6C0 /* NSDate+RelativeDates.m in Sources */,
 				002EAE5918DBD24C008E7517 /* TTMAppController.m in Sources */,
 				00EAAB9A18E1CF79009CBE8C /* TTMPredicateEditorDueRowTemplate.m in Sources */,
+				B95836682325E83C00CA4337 /* TTMAppDelegate.swift in Sources */,
 				002EAE5E18DCAE5C008E7517 /* TTMFilterPredicates.m in Sources */,
 				006062D818EC6B0800D147F2 /* NSUserDefaults+myColorSupport.m in Sources */,
 				00930EAD18B5371B0064D41B /* TTMTask.m in Sources */,
@@ -599,7 +605,6 @@
 				00B4CBA818B43E8400313DAA /* main.m in Sources */,
 				003F959E1AA2C42700A1FF47 /* NSMutableAttributableString+ColorRegExMatches.m in Sources */,
 				00EAAB9718E0C168009CBE8C /* TTMPredicateEditorDateRowTemplate.m in Sources */,
-				00EC5EA118E3BC920021242B /* TTMAppDelegate.m in Sources */,
 				00F811EF18D53F7300379B99 /* TTMPreferencesController.m in Sources */,
 				00165B2618DBD1EC00E137B8 /* TTMFiltersController.m in Sources */,
 				00FB47861A733E6100F8D2B3 /* TTMDocumentStatusBarText.m in Sources */,
@@ -806,6 +811,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_LOADER = "";
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -814,9 +820,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TodoTxtMac/TodoTxtMac-Prefix.pch";
 				INFOPLIST_FILE = "TodoTxtMac/TodoTxtMac-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.descy.michael.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "TodoTxtMac/TodoTxtMac-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -826,6 +836,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -834,9 +845,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TodoTxtMac/TodoTxtMac-Prefix.pch";
 				INFOPLIST_FILE = "TodoTxtMac/TodoTxtMac-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.descy.michael.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "TodoTxtMac/TodoTxtMac-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -845,6 +859,7 @@
 		00B4CBD018B43E8500313DAA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TodoTxtMac.app/Contents/MacOS/TodoTxtMac";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -868,6 +883,7 @@
 		00B4CBD118B43E8500313DAA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TodoTxtMac.app/Contents/MacOS/TodoTxtMac";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
