@@ -48,7 +48,7 @@
 
 @implementation TTMPredicateEditorHiddenRowTemplate
 
-#pragma mark - Class Property Getters
+//MARK: - Class Property Getters
 
 - (NSPopUpButton*)keypathPopUp {
     if(!_keypathPopUp) {
@@ -92,7 +92,7 @@
     return _boolPopUp;
 }
 
-#pragma mark - NSPredicateEditorRowTemplate Method Overrides
+//MARK: - NSPredicateEditorRowTemplate Method Overrides
 
 - (NSArray*)templateViews {
     NSMutableArray *newTemplateViews = [[super templateViews] mutableCopy];

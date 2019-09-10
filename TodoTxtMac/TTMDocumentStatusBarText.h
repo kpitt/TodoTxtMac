@@ -82,7 +82,7 @@ extern NSString* const TTMHideHiddenTasks;
 @property (nonatomic, retain) TTMDocument *document;
 @property (nonatomic) NSString *format;
 
-#pragma mark - Init Method
+//MARK: - Init Method
 
 /*!
  * @method initWithTTMDocument:format:
@@ -93,7 +93,7 @@ extern NSString* const TTMHideHiddenTasks;
  */
 - (id)initWithTTMDocument:(TTMDocument*)sourceDocument format:(NSString*)format;
 
-#pragma mark - Metadata Method
+//MARK: - Metadata Method
 
 /*!
  * @method documentMetadata:
@@ -102,7 +102,7 @@ extern NSString* const TTMHideHiddenTasks;
  */
 - (NSDictionary*)documentMetadata;
 
-#pragma mark - Output/Property Methods
+//MARK: - Output/Property Methods
 
 /*!
  * @method statusBarText:

@@ -49,7 +49,7 @@
 
 @interface TTMTasklistMetadata : NSObject
 
-#pragma mark - Properties
+//MARK: - Properties
 
 @property (nonatomic) NSMutableSet *projectsSet;
 @property (nonatomic) NSMutableSet *contextsSet;

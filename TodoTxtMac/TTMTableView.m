@@ -59,7 +59,7 @@
     return self;
 }
 
-#pragma mark - Handle Keyboard Events Methods
+//MARK: - Handle Keyboard Events Methods
 
 /*!
  * @method keyDown:
@@ -175,7 +175,7 @@
     }
 }
 
-#pragma mark - Respond to Changes Methods
+//MARK: - Respond to Changes Methods
 
 - (void)editColumn:(NSInteger)column row:(NSInteger)row withEvent:(NSEvent *)theEvent select:(BOOL)select {
     [self.tableColumns.lastObject setMinWidth:0];
@@ -206,7 +206,7 @@
     self.selectedRawText = nil;
 }
 
-#pragma mark - Drag and Drop Methods
+//MARK: - Drag and Drop Methods
 
 - (NSDragOperation)draggingEntered:(id < NSDraggingInfo >)sender {
     return NSDragOperationCopy;
@@ -224,7 +224,7 @@
     [self.parentDocument addNewTasksFromDragAndDrop:sender];
 }
 
-#pragma mark - Row Height Methods
+//MARK: - Row Height Methods
 
 - (CGFloat)rowHeight {
     return ([self.parentDocument usingUserFont]) ?
@@ -243,7 +243,7 @@
     return [layoutManager defaultLineHeightForFont:font];
 }
 
-#pragma mark - isEditing property
+//MARK: - isEditing property
 
 - (bool)isEditing {
     return (self.editedRow != -1);

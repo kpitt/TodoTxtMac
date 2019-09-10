@@ -49,12 +49,12 @@
 
 @interface TTMTableView : NSTableView
 
-#pragma mark - Properties
+//MARK: - Properties
 
 @property (nonatomic, retain) IBOutlet TTMDocument *parentDocument;
 @property (nonatomic, copy) NSString *selectedRawText;
 
-#pragma mark - Handle Keyboard Events Methods
+//MARK: - Handle Keyboard Events Methods
 
 /*!
  * @abstract This method allows us to send a new KeyDown event to this class's super
@@ -65,7 +65,7 @@
                     toKeyDown:(unichar)keyDown
                 sendToControl:(id)targetControl;
 
-#pragma mark - Row Height Methods
+//MARK: - Row Height Methods
 
 /*!
  * @method defaultLineHeightForFont:
@@ -75,7 +75,7 @@
  */
 - (CGFloat)defaultLineHeightForFont:(NSFont*)font;
 
-#pragma mark - isEditing property
+//MARK: - isEditing property
 
 /*!
  * @method isEditing

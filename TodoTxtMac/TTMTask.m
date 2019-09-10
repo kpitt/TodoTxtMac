@@ -76,7 +76,7 @@ static NSString * const RecurrencePattern = @"(?<=(^|[ ])rec:)((\\+?)\\d+[dDwWmM
 static NSString * const HiddenPattern = @"(?<=^|[ ])(h:1)(?=[ ]|$)";
 
 
-#pragma mark - Init Methods
+//MARK: - Init Methods
 
 - (id)initWithRawText:(NSString*)rawText withTaskId:(NSInteger)taskId
    withPrependedDate:(NSDate*)prependedDate {
@@ -95,7 +95,7 @@ static NSString * const HiddenPattern = @"(?<=^|[ ])(h:1)(?=[ ]|$)";
     return [self initWithRawText:rawText withTaskId:taskId withPrependedDate:nil];
 }
 
-#pragma mark - rawText Methods
+//MARK: - rawText Methods
 
 - (void)setRawText:(NSString*)rawText withPrependedDate:(NSDate*)prependedDate {
     NSString *newRawText;
@@ -351,7 +351,7 @@ static NSString * const HiddenPattern = @"(?<=^|[ ])(h:1)(?=[ ]|$)";
     return [as copy];
 }
 
-#pragma mark - Append and Prepend Methods
+//MARK: - Append and Prepend Methods
 
 - (void)appendText:(NSString*)textToAppend {
     if (self.isBlank) {
@@ -423,14 +423,14 @@ static NSString * const HiddenPattern = @"(?<=^|[ ])(h:1)(?=[ ]|$)";
 //    self.rawText = [stringComponents componentsJoinedByString:separator];
 }
 
-#pragma Find/replace Method
+//MARK: - Find/replace Method
 
 - (void)replaceText:(NSString*)textToReplace withText:(NSString*)replacementText {
     self.rawText = [self.rawText stringByReplacingOccurrencesOfString:textToReplace
                                                            withString:replacementText];
 }
 
-#pragma mark - Due/Not Due Method
+//MARK: - Due/Not Due Method
 
 - (TTMDueState)getDueState {
     // tasks with no due dates
@@ -460,7 +460,7 @@ static NSString * const HiddenPattern = @"(?<=^|[ ])(h:1)(?=[ ]|$)";
     }
 }
 
-#pragma mark - Threshold Date Methods
+//MARK: - Threshold Date Methods
 
 - (void)setThresholdDate:(NSDate *)thresholdDate {
     NSString *newThresholdDateText = [TTMDateUtility convertDateToString:thresholdDate];
@@ -528,7 +528,7 @@ static NSString * const HiddenPattern = @"(?<=^|[ ])(h:1)(?=[ ]|$)";
     }
 }
 
-#pragma mark - Priority Methods
+//MARK: - Priority Methods
 
 - (void)setPriority:(unichar)priority {
     // Blanks and completed tasks don't get priorities.
@@ -608,7 +608,7 @@ static NSString * const HiddenPattern = @"(?<=^|[ ])(h:1)(?=[ ]|$)";
     self.rawText = [RX(PriorityTextPattern) replace:self.rawText with:@""];
 }
 
-#pragma mark - Completion Methods
+//MARK: - Completion Methods
 
 - (void)markComplete {
     // Completed tasks don't need to be completed again. Blank tasks can't be completed.
@@ -651,7 +651,7 @@ static NSString * const HiddenPattern = @"(?<=^|[ ])(h:1)(?=[ ]|$)";
     }
 }
 
-# pragma mark - Postpone and Set Due Date Methods
+//MARK: - Postpone and Set Due Date Methods
 
 - (void)postponeTask:(NSInteger)daysToPostpone {
     // Blank and completed tasks don't get postponed.
@@ -706,7 +706,7 @@ static NSString * const HiddenPattern = @"(?<=^|[ ])(h:1)(?=[ ]|$)";
     self.rawText = [newRawText replace:RX(FullDueDatePatternMiddleOrEnd) with:@""];
 }
 
-#pragma mark - NSCopying Methods
+//MARK: - NSCopying Methods
 
 - (TTMTask*)copyWithZone:(NSZone *)zone {
     TTMTask *copy = [[self class] allocWithZone:zone];
@@ -718,7 +718,7 @@ static NSString * const HiddenPattern = @"(?<=^|[ ])(h:1)(?=[ ]|$)";
     return copy;
 }
 
-#pragma mark - IsEqual Methods
+//MARK: - IsEqual Methods
 
 -(BOOL)isEqual:(id)object {
     if (object == self) {
@@ -744,7 +744,7 @@ static NSString * const HiddenPattern = @"(?<=^|[ ])(h:1)(?=[ ]|$)";
     return [self.rawText hash] ^ [@(self.taskId) hash];
 }
 
-#pragma mark - Recurrence Methods
+//MARK: - Recurrence Methods
 
 - (TTMTask*)newRecurringTask {
     if (!self.isRecurring) {

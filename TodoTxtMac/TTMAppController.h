@@ -62,7 +62,7 @@ extern NSString *const TodoFileArgument;
 - (IBAction)openPlaintextProductivityWebSite:(id)sender;
 - (IBAction)openTodoTxtTipsPlaintextProductivityWebSite:(id)sender;
 
-#pragma mark - User Defaults-related Methods
+//MARK: - User Defaults-related Methods
 
 /*!
  * @method initializeUserDefaults:
@@ -77,7 +77,7 @@ extern NSString *const TodoFileArgument;
  */
 - (void)resetUserDefaults:(id)sender;
 
-#pragma mark - Command-line Argument-related Methods
+//MARK: - Command-line Argument-related Methods
 
 /*!
  * @method openTodoFileFromCommandLineArgument:
@@ -106,7 +106,7 @@ extern NSString *const TodoFileArgument;
  */
 - (void)openDocumentFromFileURL:(NSURL*)fileURL;
 
-#pragma mark - Open Default Todo.txt File Methods
+//MARK: - Open Default Todo.txt File Methods
 
 /*!
  * @method openDefaultTodoFile:
@@ -116,7 +116,7 @@ extern NSString *const TodoFileArgument;
  */
 -(void)openDefaultTodoFile;
 
-#pragma mark - Close All Windows Methods
+//MARK: - Close All Windows Methods
 
 /*!
  * @method closeAllWindows:
@@ -132,7 +132,7 @@ extern NSString *const TodoFileArgument;
                didCloseAll:(BOOL)didCloseAll
                contextInfo:(void *)contextInfo;
 
-#pragma mark - Reload All Methods
+//MARK: - Reload All Methods
 
 /*!
  * @method reloadAll:
@@ -140,7 +140,7 @@ extern NSString *const TodoFileArgument;
  */
 - (IBAction)reloadAll:(id)sender;
 
-#pragma mark - Visual Refresh Methods
+//MARK: - Visual Refresh Methods
 
 /*!
  * @method visualRefreshAll:

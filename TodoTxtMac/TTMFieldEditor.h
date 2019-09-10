@@ -48,7 +48,7 @@
 
 @interface TTMFieldEditor : NSTextView
 
-#pragma mark - Properties
+//MARK: - Properties
 
 @property (nonatomic, retain) NSArray *projectsArray;
 @property (nonatomic, retain) NSArray *contextsArray;
@@ -56,7 +56,7 @@
 @property (nonatomic) NSUInteger nextInsertionIndex;
 @property (nonatomic) NSString *originalValue;
 
-#pragma mark - Autocompletion Timer Methods
+//MARK: - Autocompletion Timer Methods
 
 /*!
  * @method startCompletionTimer:

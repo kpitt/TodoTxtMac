@@ -87,7 +87,7 @@
     [self.filter9PredicateEditor reloadCriteria];
 }
 
-#pragma mark - Window Delegate Methods
+//MARK: - Window Delegate Methods
 
 - (void)keyDown:(NSEvent *)theEvent {
     NSUInteger flags = [theEvent modifierFlags];

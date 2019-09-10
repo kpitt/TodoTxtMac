@@ -51,7 +51,7 @@
 
 @implementation TTMTableViewDelegate
 
-#pragma mark - TableView Delegate Methods
+//MARK: - TableView Delegate Methods
 
 - (void)tableView:(NSTableView *)tableView
   willDisplayCell:(id)cell

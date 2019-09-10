@@ -51,7 +51,7 @@
 NSString *const inFormatPrefix = @"rawText IN[cd]";
 NSString *const notContainsFormatPrefix = @"NOT rawText CONTAINS[cd]";
 
-#pragma mark - NSPredicateEditorRowTemplate Method Overrides
+//MARK: - NSPredicateEditorRowTemplate Method Overrides
 
 - (double)matchForPredicate:(NSPredicate *)predicate {
     if ([predicate.predicateFormat hasPrefix:notContainsFormatPrefix]) {

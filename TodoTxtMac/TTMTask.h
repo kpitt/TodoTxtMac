@@ -72,7 +72,7 @@ typedef enum : NSUInteger {
     ThresholdAfterToday
 } TTMThresholdState;
 
-#pragma mark - Properties
+//MARK: - Properties
 
 /*! Raw text of the task (a single line in the todo.txt file) */
 @property (nonatomic, readwrite, setter = setRawText:, getter = rawText) NSString *rawText;
@@ -106,7 +106,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, readonly) NSString *recurrencePattern;
 @property (nonatomic, readonly) BOOL isHidden;
 
-#pragma mark - Init Methods
+//MARK: - Init Methods
 
 /*!
  * @method initWithRawText:withTaskId:withPrependedDate:
@@ -135,7 +135,7 @@ typedef enum : NSUInteger {
  */
 - (id)initWithRawText:(NSString*)rawText withTaskId:(NSInteger)taskId;
 
-#pragma mark - rawText Methods
+//MARK: - rawText Methods
 
 /*!
  * @method setRawText:
@@ -184,7 +184,7 @@ typedef enum : NSUInteger {
                 thresholdDateColor:(NSColor*)thresholdDateColor
                  creationDateColor:(NSColor*)creationDateColor;
 
-#pragma mark - Append and Prepend Methods
+//MARK: - Append and Prepend Methods
 
 /*!
  * @method appendText:
@@ -201,7 +201,7 @@ typedef enum : NSUInteger {
  */
 - (void)prependText:(NSString*)textToPrepend;
 
-#pragma Find/replace Method
+//MARK: - Find/replace Method
 
 /*!
  * @method prependText:
@@ -211,7 +211,7 @@ typedef enum : NSUInteger {
  */
 - (void)replaceText:(NSString*)textToReplace withText:(NSString*)replacementText;
 
-#pragma mark - Due/Not Due Method
+//MARK: - Due/Not Due Method
 
 /*!
  * @method getDueState:
@@ -223,7 +223,7 @@ typedef enum : NSUInteger {
  */
 - (TTMDueState)getDueState;
 
-#pragma mark - Threshold Date Methods
+//MARK: - Threshold Date Methods
 
 /*!
  * @method setThresholdDate:
@@ -267,7 +267,7 @@ typedef enum : NSUInteger {
  */
 - (TTMThresholdState)getThresholdState;
 
-#pragma mark - Priority Methods
+//MARK: - Priority Methods
 
 /*!
  * @method setPriority:
@@ -300,7 +300,7 @@ typedef enum : NSUInteger {
  */
 - (void)removePriority;
 
-#pragma mark - Completion Methods
+//MARK: - Completion Methods
 
 /*!
  * @method markComplete:
@@ -324,7 +324,7 @@ typedef enum : NSUInteger {
  */
 - (void)toggleCompletionStatus;
 
-# pragma mark - Postpone and Set Due Date Methods
+//MARK: - Postpone and Set Due Date Methods
 
 /*!
  * @method postponeTask;

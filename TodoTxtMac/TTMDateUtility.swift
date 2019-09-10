@@ -168,6 +168,8 @@ class TTMDateUtility: NSObject {
     }
 }
 
+//MARK: - Date Extensions
+
 extension Date {
     
     var currentCalendar: Calendar {

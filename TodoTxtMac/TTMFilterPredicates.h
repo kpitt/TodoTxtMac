@@ -48,7 +48,7 @@
 
 @interface TTMFilterPredicates : NSObject
 
-#pragma mark - Default Filter Predicate Methods
+//MARK: - Default Filter Predicate Methods
 
 /*!
  * @method defaultFilterPredicate:
@@ -81,7 +81,7 @@
  */
 + (NSPredicate*)noFilterPredicate;
 
-#pragma mark - Set Filter Predicate Methods
+//MARK: - Set Filter Predicate Methods
 
 /*!
  * @method setFilterPredicate:toUserDefaultsKey:
@@ -106,7 +106,7 @@
  */
 + (void)setActiveFilterPredicate:(NSPredicate*)predicate;
 
-#pragma mark - Get Filter Predicate Methods
+//MARK: - Get Filter Predicate Methods
 
 /*!
  * @method getFilterPredicateFromUserDefaultsKey:
@@ -149,7 +149,7 @@
  */
 + (NSUInteger)activeFilterPredicatePresetNumber;
 
-#pragma mark - Reset Filter Predicate Methods
+//MARK: - Reset Filter Predicate Methods
 
 /*!
  * @method resetAllFilterPredicates:

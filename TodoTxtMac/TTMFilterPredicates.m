@@ -58,7 +58,7 @@
     return self;
 }
 
-#pragma mark - Default Filter Predicate Methods
+//MARK: - Default Filter Predicate Methods
 
 + (NSPredicate*)defaultFilterPredicate {
     static NSPredicate *defaultPredicate = nil;
@@ -113,7 +113,7 @@
     return [NSPredicate predicateWithFormat:@"isHidden == 0"];
 }
 
-#pragma mark - Set Filter Predicate Methods
+//MARK: - Set Filter Predicate Methods
 
 + (void)setFilterPredicate:(NSPredicate*)predicate toUserDefaultsKey:(NSString*)key {
     NSData *filterPredicateData = [NSKeyedArchiver archivedDataWithRootObject:predicate];
@@ -128,7 +128,7 @@
     [self setFilterPredicate:predicate toUserDefaultsKey:@"activeFilterPredicate"];
 }
 
-#pragma mark - Get Filter Predicate Methods
+//MARK: - Get Filter Predicate Methods
 
 + (NSPredicate*)getFilterPredicateFromUserDefaultsKey:(NSString*)key {
     NSData *filterPredicateData = [[NSUserDefaults standardUserDefaults] objectForKey:key];
@@ -171,7 +171,7 @@
     return [[NSUserDefaults standardUserDefaults] integerForKey:@"activeFilterPreset"];
 }
 
-#pragma mark - Reset Filter Predicate Methods
+//MARK: - Reset Filter Predicate Methods
 
 + (void)resetFilterPredicate:(NSUInteger)presetNumber {
     [self setFilterPredicate:[self defaultFilterPredicate] toPresetNumber:presetNumber];

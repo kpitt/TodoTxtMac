@@ -50,7 +50,7 @@
 
 @implementation TTMFieldEditor
 
-#pragma mark - Init Methods
+//MARK: - Init Methods
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -73,7 +73,7 @@
     // Drawing code here.
 }
 
-#pragma mark - Autocompletion Timer Methods
+//MARK: - Autocompletion Timer Methods
 
 - (void)startCompletionTimer {
     [self stopCompletionTimer]; // cancel any timers running already
@@ -94,7 +94,7 @@
     [self stopCompletionTimer];
 }
 
-#pragma mark - Autocompletion Event Handler Methods
+//MARK: - Autocompletion Event Handler Methods
 
 /*!
  * @method keyUp:

@@ -57,11 +57,11 @@
 
 @implementation TTMDocument
 
-#pragma mark - Instance Variables
+//MARK: - Instance Variables
 
 static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 
-#pragma mark - init Methods
+//MARK: - init Methods
 
 - (id)init
 {
@@ -176,7 +176,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     return self.customFieldEditor;
 }
 
-#pragma mark - File Loading and Saving Methods
+//MARK: - File Loading and Saving Methods
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError {
     // Prepare file contents to save.
@@ -309,7 +309,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     return YES;
 }
 
-#pragma mark - Undo/Redo Methods
+//MARK: - Undo/Redo Methods
 
 - (void)replaceAllTasks:(NSArray*)newTasks {
     [[self.undoManager prepareWithInvocationTarget:self] replaceAllTasks:[[self.arrayController arrangedObjects] copy]];
@@ -365,7 +365,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     [self removeTasks:archivedTasks fromArchiveFile:archiveFilePath];
 }
 
-#pragma mark - Add/Remove Task Methods
+//MARK: - Add/Remove Task Methods
 
 - (TTMTask*)createWorkingTaskWithRawText:(NSString*)rawText withTaskId:(NSUInteger)newTaskId {
     // Convert natural-language due dates, such as "due:today" and "due:tomorrow", to YYYY-MM-DD.
@@ -522,7 +522,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     [self moveFocusToNewTaskTextField:self];
 }
 
-#pragma mark - Update Task Methods
+//MARK: - Update Task Methods
 
 - (void)refreshTaskListWithSave:(BOOL)saveToFile {
     // retain selected items, because selection is lost when the file/arrayController is reloaded
@@ -799,7 +799,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     [[alert.accessoryView window] makeFirstResponder:alert.accessoryView];
 }
 
-#pragma mark - Priority Methods
+//MARK: - Priority Methods
 
 - (IBAction)setPriority:(id)sender {
     NSAlert *alert = [[NSAlert alloc] init];
@@ -891,7 +891,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     [self.undoManager setActionName:NSLocalizedString(@"Remove Priority", @"Undo Remove Priority")];
 }
 
-# pragma mark - Postpone/Due Date Methods
+//MARK: - Postpone/Due Date Methods
 
 - (IBAction)setDueDate:(id)sender {
     NSAlert *alert = [[NSAlert alloc] init];
@@ -1010,7 +1010,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     [[alert.accessoryView window] makeFirstResponder:alert.accessoryView];
 }
 
-#pragma mark - Threshold Date Methods
+//MARK: - Threshold Date Methods
 
 - (IBAction)setThresholdDate:(id)sender {
     NSAlert *alert = [[NSAlert alloc] init];
@@ -1095,7 +1095,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     [self.undoManager setActionName:NSLocalizedString(@"Remove Threshold Date", @"Undo Remove Threshold Date")];
 }
 
-#pragma mark - Sorting Methods
+//MARK: - Sorting Methods
 
 - (void)sortTaskList:(TTMTaskListSortType)sortType {
     
@@ -1211,7 +1211,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     [self sortTaskList:[sender tag]];
 }
 
-#pragma mark - Filter Methods
+//MARK: - Filter Methods
 
 - (NSPredicate*)combineFilterPresetPredicate:(NSPredicate*)filterPresetPredicate
                    withSearchFilterPredicate:(NSPredicate*)searchFilterPredicate {
@@ -1256,7 +1256,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     [self updateTaskListMetadata];
 }
 
-#pragma mark - Archiving Methods
+//MARK: - Archiving Methods
 
 - (IBAction)archiveCompletedTasks:(id)sender {
     NSString *archiveFilePath = [[NSUserDefaults standardUserDefaults]
@@ -1360,7 +1360,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 }
 
 
-#pragma mark - NSDocument Method Overrides
+//MARK: - NSDocument Method Overrides
 
 // Override normal copy handler to copy selected tasks from the task list.
 // This does not get called when the field editor is active.
@@ -1399,7 +1399,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     [self addNewTasksFromClipboard:self];
 }
 
-#pragma mark - Menu Item Validation Methods
+//MARK: - Menu Item Validation Methods
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
     // Note: Parent menu item tags rather than titles are queried so we don't need to worry about
@@ -1446,7 +1446,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     return [super validateMenuItem:menuItem];
 }
 
-#pragma mark - Find Methods
+//MARK: - Find Methods
 
 - (IBAction)moveFocusToSearchBox:(id)sender {
     [self.searchField setRefusesFirstResponder:NO];
@@ -1460,7 +1460,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     [self.searchField setRefusesFirstResponder:YES];
 }
 
-#pragma mark - Tasklist Metadata Methods
+//MARK: - Tasklist Metadata Methods
 
 - (void)updateTaskListMetadata {
     // Update tasklist metadata.
@@ -1496,7 +1496,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     self.tasklistMetadataSheet = nil;
 }
 
-#pragma mark - Status Bar Methods
+//MARK: - Status Bar Methods
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"selection"]) {

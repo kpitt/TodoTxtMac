@@ -70,13 +70,13 @@
     [fontPanel display];
 }
 
-#pragma mark - *** Window delegation ***
+//MARK: - *** Window delegation ***
 
 - (BOOL)windowShouldClose:(NSWindow *)window {
     return [window makeFirstResponder:nil]; // validate editing
 }
 
-#pragma mark - Choose File Methods
+//MARK: - Choose File Methods
 
 - (IBAction)chooseArchiveFile:(id)sender {
     [self chooseFileForUserDefaultsKey:@"archiveFilePath" withPrompt:@"Choose Archive File"];
@@ -101,7 +101,7 @@
     }
 }
 
-#pragma mark - Behavior Change Methods
+//MARK: - Behavior Change Methods
 
 - (IBAction)hideFutureTasksPreferenceChanged:(id)sender {
     [self.appController visualRefreshAll:self];
@@ -111,7 +111,7 @@
     [self.appController visualRefreshAll:self];
 }
 
-#pragma mark - Font Change Methods
+//MARK: - Font Change Methods
 
 - (IBAction)openFontPanel:(id)sender {
     NSFontManager *fontManager = [NSFontManager sharedFontManager];
@@ -134,13 +134,13 @@
     [NSFont setUserFont:newFont];
 }
 
-#pragma mark - Color Change Methods
+//MARK: - Color Change Methods
 
 - (IBAction)colorChanged:(id)sender {
     [self.appController visualRefreshAll:self];
 }
 
-#pragma mark - Status Bar Methods
+//MARK: - Status Bar Methods
 
 - (IBAction)insertTagIntoStatusBarFormat:(id)sender {
     [[self.statusBarFormat currentEditor] insertText:self.statusBarTags.selectedObjects[0]];

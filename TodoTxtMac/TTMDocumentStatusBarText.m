@@ -78,7 +78,7 @@ NSString* const TTMSelectedTaskCount = @"{Selected}";
 NSString* const TTMHideFutureTasks = @"{Hide Future Tasks}";
 NSString* const TTMHideHiddenTasks = @"{Hide Hidden Tasks}";
 
-#pragma mark - Init Method
+//MARK: - Init Method
 
 - (id)initWithTTMDocument:(TTMDocument*)sourceDocument format:(NSString*)format {
     self = [super init];
@@ -89,7 +89,7 @@ NSString* const TTMHideHiddenTasks = @"{Hide Hidden Tasks}";
     return self;
 }
 
-#pragma mark - Metadata Method
+//MARK: - Metadata Method
 
 - (NSDictionary*)documentMetadata {
     NSDictionary *sortNames = @{@(TTMSortOrderInFile) : @"File",
@@ -148,7 +148,7 @@ NSString* const TTMHideHiddenTasks = @"{Hide Hidden Tasks}";
     }
 }
 
-#pragma mark - Output/Property Methods
+//MARK: - Output/Property Methods
 
 - (NSString*)statusBarText {
     NSMutableString *text = [self.format mutableCopy];

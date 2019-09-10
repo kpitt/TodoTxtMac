@@ -49,7 +49,7 @@
 
 @interface TTMTableViewDelegate : NSObject <NSTableViewDelegate>
 
-#pragma mark - Properties
+//MARK: - Properties
 
 @property (nonatomic, retain) IBOutlet NSArrayController *arrayController;
 

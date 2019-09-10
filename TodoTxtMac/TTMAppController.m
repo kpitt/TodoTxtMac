@@ -173,7 +173,7 @@ NSString *const TodoFileArgument = @"todo-file";
 }
 
 
-#pragma mark - User Defaults-related Methods
+//MARK: - User Defaults-related Methods
 
 - (void)initializeUserDefaults:(id)sender {
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues()];
@@ -187,7 +187,7 @@ NSString *const TodoFileArgument = @"todo-file";
     [[NSUserDefaultsController sharedUserDefaultsController] setInitialValues:defaultValues()];
 }
 
-#pragma mark - Command-line Argument-related Methods
+//MARK: - Command-line Argument-related Methods
 
 - (void)openTodoFileFromCommandLineArgument {
     NSString *fileToOpenOnLaunch = [self commandLineArgumentTodoFile];
@@ -216,7 +216,7 @@ NSString *const TodoFileArgument = @"todo-file";
      }];
 }
 
-#pragma mark - Open Default Todo.txt File Methods
+//MARK: - Open Default Todo.txt File Methods
 
 -(void)openDefaultTodoFile {
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"openDefaultTodoFileOnStartup"]) {
@@ -226,7 +226,7 @@ NSString *const TodoFileArgument = @"todo-file";
                                     stringForKey:@"defaultTodoFilePath"]];
 }
 
-#pragma mark - Close All Windows Methods
+//MARK: - Close All Windows Methods
 
 - (IBAction)closeAllWindows:(id)sender {
     [[NSDocumentController sharedDocumentController]
@@ -241,7 +241,7 @@ NSString *const TodoFileArgument = @"todo-file";
     return;
 }
 
-#pragma mark - Reload All Methods
+//MARK: - Reload All Methods
 
 - (IBAction)reloadAll:(id)sender {
     NSArray *documents = [[NSDocumentController sharedDocumentController] documents];
@@ -250,7 +250,7 @@ NSString *const TodoFileArgument = @"todo-file";
     }];
 }
 
-#pragma mark - Visual Refresh Methods
+//MARK: - Visual Refresh Methods
 
 - (IBAction)visualRefreshAll:(id)sender {
     NSArray *documents = [[NSDocumentController sharedDocumentController] documents];

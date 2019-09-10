@@ -72,7 +72,7 @@ typedef enum : NSUInteger {
 
 @interface TTMDocument : NSDocument
 
-#pragma mark - Properties
+//MARK: - Properties
 
 // Data elements related to the task list
 @property (nonatomic, copy) NSMutableArray *taskList;
@@ -117,7 +117,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, retain) NSDate *lastInternalModificationDate;
 
 
-#pragma mark - File Loading and Saving Methods
+//MARK: - File Loading and Saving Methods
 
 /*!
  * @method reloadFile:
@@ -146,7 +146,7 @@ typedef enum : NSUInteger {
  */
 - (void)setTaskListSelections:(NSArray*)taskListSelectedItems;
 
-#pragma mark - Undo/Redo Methods
+//MARK: - Undo/Redo Methods
 
 /*!
  * @method replaceTasks:withTasks:
@@ -184,7 +184,7 @@ typedef enum : NSUInteger {
  */
 - (void)undoArchiveTasks:(NSArray*)archivedTasks fromArchiveFile:(NSString*)archiveFilePath;
 
-#pragma mark - Add/Remove Task(s) methods
+//MARK: - Add/Remove Task(s) methods
 
 /*!
  * @method createWorkingTaskWithRawText:createWorkingTaskWithRawText
@@ -259,7 +259,7 @@ typedef enum : NSUInteger {
  */
 - (IBAction)copyTaskToNewTask:(id)sender;
 
-#pragma mark - Update Task Methods
+//MARK: - Update Task Methods
 
 /*!
  * @method refreshTaskListWithSave:
@@ -331,7 +331,7 @@ typedef enum : NSUInteger {
  */
 - (IBAction)replaceText:(id)sender;
 
-#pragma mark - Priority Methods
+//MARK: - Priority Methods
 
 /*!
  * @method setPriority:
@@ -357,7 +357,7 @@ typedef enum : NSUInteger {
  */
 - (IBAction)removePriority:(id)sender;
 
-#pragma mark - Postpone and Due Date Methods
+//MARK: - Postpone and Due Date Methods
 
 /*!
  * @method setDueDate:
@@ -392,7 +392,7 @@ typedef enum : NSUInteger {
  */
 - (IBAction)postpone:(id)sender;
 
-#pragma mark - Threshold Date Methods
+//MARK: - Threshold Date Methods
 
 /*!
  * @method setThresholdDate:
@@ -418,7 +418,7 @@ typedef enum : NSUInteger {
  */
 - (IBAction)removeThresholdDate:(id)sender;
 
-#pragma mark - Sort Methods
+//MARK: - Sort Methods
 
 /*!
  * @method sortTaskList:
@@ -434,7 +434,7 @@ typedef enum : NSUInteger {
  */
 - (IBAction)sortTaskListUsingTagforPreset:(id)sender;
 
-#pragma mark - Filter Methods
+//MARK: - Filter Methods
 
 /*!
  * @method combineFilterPresetPredicate:withSearchFilterPredicate
@@ -470,7 +470,7 @@ typedef enum : NSUInteger {
  */
 - (void)changeActiveFilterPredicateToPreset:(NSUInteger)presetNumber;
 
-#pragma mark - Archive Methods
+//MARK: - Archive Methods
 
 /*!
  * @method archiveCompletedTasks:
@@ -492,7 +492,7 @@ typedef enum : NSUInteger {
 
 - (void)removeTasks:(NSArray*)tasksToRemove fromArchiveFile:(NSString*)archiveFilePath;
 
-#pragma mark - Find Methods
+//MARK: - Find Methods
 
 /*!
  * @method moveFocusToSearchBox:
@@ -506,7 +506,7 @@ typedef enum : NSUInteger {
  */
 - (IBAction)makeSearchBoxRefuseFocus:(id)sender;
 
-#pragma mark - Tasklist Metadata Methods
+//MARK: - Tasklist Metadata Methods
 
 /*!
  * @method showTasklistMetadata:
@@ -520,7 +520,7 @@ typedef enum : NSUInteger {
  */
 - (IBAction)hideTasklistMetadata:(id)sender;
 
-#pragma mark - Status Bar Methods
+//MARK: - Status Bar Methods
 
 /*!
  * @method updateStatusBarText:

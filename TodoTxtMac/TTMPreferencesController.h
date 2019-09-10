@@ -55,7 +55,7 @@
 @property (nonatomic, retain) NSArray *availableStatusBarTags;
 @property (nonatomic, retain) IBOutlet NSArrayController *statusBarTags;
 
-#pragma mark - Choose File Methods
+//MARK: - Choose File Methods
 
 /*!
  * @method chooseArchiveFile:
@@ -77,7 +77,7 @@
  */
 - (void)chooseFileForUserDefaultsKey:(NSString*)userDefaultsKey withPrompt:(NSString*)prompt;
 
-#pragma mark - Behavior Change Methods
+//MARK: - Behavior Change Methods
 
 /*!
  * @method hideFutureTasksPreferenceChanged:
@@ -91,7 +91,7 @@
  */
 - (IBAction)hideHiddenTasksPreferenceChanged:(id)sender;
 
-#pragma mark - Font Change Methods
+//MARK: - Font Change Methods
 
 /*!
  * @method openFontPanel:
@@ -100,7 +100,7 @@
  */
 - (IBAction)openFontPanel:(id)sender;
 
-#pragma mark - Color Change Methods
+//MARK: - Color Change Methods
 
 /*!
  * @method colorChanged:
@@ -109,7 +109,7 @@
  */
 - (IBAction)colorChanged:(id)sender;
 
-#pragma mark - Status Bar Methods
+//MARK: - Status Bar Methods
 
 /*!
  * @method insertTagIntoStatusBarFormat:
