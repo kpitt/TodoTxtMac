@@ -46,7 +46,7 @@
 
 #import "TTMDocument.h"
 #import "TTMTask.h"
-#import "TTMDateUtility.h"
+#import "TodoTxtMac-Swift.h"
 #import "TTMTableView.h"
 #import "TTMTableViewDelegate.h"
 #import "TTMFilterPredicates.h"

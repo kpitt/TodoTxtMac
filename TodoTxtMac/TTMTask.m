@@ -46,7 +46,7 @@
 
 #import "TTMTask.h"
 #import "RegExCategories.h"
-#import "TTMDateUtility.h"
+#import "TodoTxtMac-Swift.h"
 #import "NSMutableAttributableString+ColorRegExMatches.h"
 #import "NSDate+RelativeDates.h"
 

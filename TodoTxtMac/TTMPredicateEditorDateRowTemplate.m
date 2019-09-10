@@ -45,7 +45,7 @@
  */
 
 #import "TTMPredicateEditorDateRowTemplate.h"
-#import "TTMDateUtility.h"
+#import "TodoTxtMac-Swift.h"
 
 @implementation TTMPredicateEditorDateRowTemplate
 
