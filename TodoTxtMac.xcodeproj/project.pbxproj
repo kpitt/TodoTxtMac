@@ -161,8 +161,6 @@
 		00930EA918B536B00064D41B /* RegExCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegExCategories.m; sourceTree = "<group>"; };
 		00930EAB18B5371B0064D41B /* TTMTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMTask.h; sourceTree = "<group>"; };
 		00930EAC18B5371B0064D41B /* TTMTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask.m; sourceTree = "<group>"; };
-		00930EAF18B537C10064D41B /* TTMDateUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMDateUtility.h; sourceTree = "<group>"; };
-		00930EB018B537C10064D41B /* TTMDateUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMDateUtility.m; sourceTree = "<group>"; };
 		00A4E02E18D1569700CEE0A8 /* TodoTxtMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TodoTxtMac.entitlements; sourceTree = "<group>"; };
 		00B4CB9818B43E8400313DAA /* TodoTxtMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoTxtMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00B4CB9B18B43E8400313DAA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -199,14 +197,10 @@
 		00EAAB9918E1CF79009CBE8C /* TTMPredicateEditorDueRowTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMPredicateEditorDueRowTemplate.m; sourceTree = "<group>"; };
 		00EAAB9B18E1CF92009CBE8C /* TTMPredicateEditorCompletedRowTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMPredicateEditorCompletedRowTemplate.h; sourceTree = "<group>"; };
 		00EAAB9C18E1CF92009CBE8C /* TTMPredicateEditorCompletedRowTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMPredicateEditorCompletedRowTemplate.m; sourceTree = "<group>"; };
-		00EC5E9F18E3BC920021242B /* TTMAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMAppDelegate.h; sourceTree = "<group>"; };
-		00EC5EA018E3BC920021242B /* TTMAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMAppDelegate.m; sourceTree = "<group>"; };
 		00F3961018C6AC010002EA3F /* TTMTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMTableView.h; sourceTree = "<group>"; };
 		00F3961118C6AC010002EA3F /* TTMTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTableView.m; sourceTree = "<group>"; };
 		00F811EC18D53F7300379B99 /* TTMPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMPreferencesController.h; sourceTree = "<group>"; };
 		00F811ED18D53F7300379B99 /* TTMPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMPreferencesController.m; sourceTree = "<group>"; };
-		00FA1D2618F1EF340066A437 /* FontNameTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontNameTransformer.h; sourceTree = "<group>"; };
-		00FA1D2718F1EF340066A437 /* FontNameTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontNameTransformer.m; sourceTree = "<group>"; };
 		00FA1D2918F1EF4C0066A437 /* RelativeDates.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = RelativeDates.strings; sourceTree = "<group>"; };
 		00FB47841A733E6100F8D2B3 /* TTMDocumentStatusBarText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMDocumentStatusBarText.h; sourceTree = "<group>"; };
 		00FB47851A733E6100F8D2B3 /* TTMDocumentStatusBarText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMDocumentStatusBarText.m; sourceTree = "<group>"; };
@@ -284,10 +278,6 @@
 		0080EAA118D388770014DDD1 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				00FA1D2618F1EF340066A437 /* FontNameTransformer.h */,
-				00FA1D2718F1EF340066A437 /* FontNameTransformer.m */,
-				00930EAF18B537C10064D41B /* TTMDateUtility.h */,
-				00930EB018B537C10064D41B /* TTMDateUtility.m */,
 				00930EA818B536B00064D41B /* RegExCategories.h */,
 				00930EA918B536B00064D41B /* RegExCategories.m */,
 				006062D618EC6B0800D147F2 /* NSUserDefaults+myColorSupport.h */,
@@ -465,8 +455,6 @@
 			isa = PBXGroup;
 			children = (
 				00B4CBB318B43E8500313DAA /* MainMenu.xib */,
-				00EC5E9F18E3BC920021242B /* TTMAppDelegate.h */,
-				00EC5EA018E3BC920021242B /* TTMAppDelegate.m */,
 				002EAE5718DBD24C008E7517 /* TTMAppController.h */,
 				002EAE5818DBD24C008E7517 /* TTMAppController.m */,
 				B95836652325BC4100CA4337 /* TTMAppDelegate.swift */,
