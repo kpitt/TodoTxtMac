@@ -50,6 +50,12 @@ import Foundation
 
 class TTMDateUtility: NSObject {
     
+    /*!
+     * @method convertStringToDate:
+     * @abstract This method converts a string in "yyyy-MM-dd" format to an NSDate object.
+     * @param dateString An NSString in "yyyy-MM-dd" format. It must not contain time elements.
+     * @return Returns a date object based on the date string.
+     */
     @objc class func convertStringToDate(_ dateString: String) -> Date? {
         // dateString must not contain a time element.
         let dateFormatter = self.dateFormatter()
@@ -64,26 +70,63 @@ class TTMDateUtility: NSObject {
         return dateFormatter
     }
     
+    /*!
+     * @method convertDateToString:
+     * @abstract This method returns today's date as a string in "yyyy-MM-dd" format.
+     * @param date The date to convert to a string.
+     * @return The date parameter as a string in "yyyy-MM-dd" format.
+     */
     @objc class func convertDateToString(_ date: Date) -> String {
         return self.dateFormatter().string(from: date)
     }
     
+    /*!
+     * @method todayAsString:
+     * @abstract This method returns today's date.
+     * @return Today's date.
+     */
     @objc class func today() -> Date {
         return self.dateWithoutTime(Date())
     }
     
+    /*!
+     * @method todayAsString:
+     * @abstract This method returns today's date as a string in "yyyy-MM-dd" format.
+     * @return Today's date as a string in "yyyy-MM-dd" format.
+     */
     @objc class func todayAsString() -> String {
         return self.convertDateToString(self.today())
     }
     
+    /*!
+     * @method addDays:toDate:
+     * @abstract This method adds a number of days to the date.
+     * @param days The number of days to add. Can be negative.
+     * @param date The date to add days to.
+     * @return A date offset by the given number of days.
+     */
     @objc class func addDays(_ days: Int, toDate date: Date) -> Date? {
         return Calendar.current.date(byAdding: Calendar.Component.day, value: days, to: date)
     }
     
+    /*!
+     * @method dateWithoutTime:
+     * @abstract This method strips the time element from a date.
+     * @param date The date to return as of 00:00:00.
+     * @return A date with the time element set to 00:00:00.
+     * @discussion This method is necessary to allow for date "is equal" comparisons
+     * in NSPredicateEditor.
+     */
     @objc class func dateWithoutTime(_ date: Date) -> Date {
         return Calendar.current.startOfDay(for: date)
     }
     
+    /*!
+     * @method dateFromNaturalLanguageString:
+     * @abstract This method returns a date based on a string such as "today" or "Monday".
+     * @param string A string that could represent a relative due date.
+     * @return A date, or nil if no date matches the string passed to the method.
+     */
     class func dateFromNaturalLanguageString(_ string: String) -> Date? {
         // This method's structure of comparing localized strings, rather than just using
         // an NSDataDetector, came about because NSDataDetector does not properly find dates
@@ -131,6 +174,17 @@ class TTMDateUtility: NSObject {
         return self.relativeDateFromWeekdayName(testString, withAllowedWeekdayNames: shortWeekdayNames, withDateFormat: "eee")
     }
     
+    /*!
+     * @method relativeDateFromWeekdayName:withAllowedWeekdayNames:withDateFormat
+     * @abstract This method returns a date based on a string that represents a weekday name.
+     * @return A date, or nil if no date matches the string passed to the method.
+     * @param weekdayName A string that could be a weekday name.
+     * @param allowedWeekdayNames An array of weekday names (or shortnames) that the weekdayName
+     * will be tested to match.
+     * @param dateFormat Date format to apply to the weekdayName for matching purposes.
+     * @discussion This is a convenience method called from
+     * relativeDateFromWeekdayName:withAllowedWeekdayNames:withDateFormat.
+     */
     class func relativeDateFromWeekdayName(_ weekdayName: String, withAllowedWeekdayNames allowedWeekdayNames: [String], withDateFormat dateFormat: String) -> Date? {
         let weekdayNamesSet = Set(allowedWeekdayNames)
         if !weekdayNamesSet.contains(weekdayName) {
@@ -152,6 +206,14 @@ class TTMDateUtility: NSObject {
         return nil
     }
     
+    /*!
+     * @method dateStringFromNaturalLanguageString:
+     * @abstract This method returns a string-formatted date in "YYYY-MM-DD" format,
+     * based on a string such as "today" or "Monday".
+     * @param string A string that could represent a relative due date.
+     * @return A string-formatted date in "YYYY-MM-DD" format, or nil if no date matches
+     * the string passed to the method.
+     */
     @objc class func dateStringFromNaturalLanguageString(_ naturalLanguageString: String) -> String? {
         let date = self.dateFromNaturalLanguageString(naturalLanguageString)
         if date == nil {
