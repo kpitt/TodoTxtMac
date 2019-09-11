@@ -91,10 +91,10 @@ typedef enum : NSUInteger {
 @property (nonatomic, readonly) NSDate *completionDate;
 @property (nonatomic, readonly) NSString *thresholdDateText;
 @property (nonatomic, readonly) NSDate *thresholdDate;
-@property (nonatomic, readonly, copy) NSArray *contextsArray;
+@property (nonatomic, readonly, copy) NSArray<NSString *> *contextsArray;
 @property (nonatomic, readonly, copy) NSString *contexts;
 @property (nonatomic, readonly) BOOL hasContexts;
-@property (nonatomic, readonly, copy) NSArray *projectsArray;
+@property (nonatomic, readonly, copy) NSArray<NSString *> *projectsArray;
 @property (nonatomic, readonly, copy) NSString *projects;
 @property (nonatomic, readonly) BOOL hasProjects;
 @property (nonatomic, readonly) TTMDueState dueState;

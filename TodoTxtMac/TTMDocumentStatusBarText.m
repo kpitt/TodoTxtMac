@@ -44,9 +44,10 @@
  * THE SOFTWARE.
  */
 
+#import "TodoTxtMac-Swift.h"
+
 #import "TTMDocumentStatusBarText.h"
 #import "TTMDocument.h"
-#import "TTMTasklistMetadata.h"
 #import "TTMFilterPredicates.h"
 
 @implementation TTMDocumentStatusBarText

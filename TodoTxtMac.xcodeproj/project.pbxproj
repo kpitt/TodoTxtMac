@@ -65,7 +65,6 @@
 		00B4CBC718B43E8500313DAA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00B4CBC518B43E8500313DAA /* InfoPlist.strings */; };
 		00B4CBC918B43E8500313DAA /* TTMTask_ReplaceText_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B4CBC818B43E8500313DAA /* TTMTask_ReplaceText_UnitTests.m */; };
 		00B8C82518E48FFF008D9E48 /* TTMFieldEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B8C82418E48FFF008D9E48 /* TTMFieldEditor.m */; };
-		00D102B61991ABBE00D30237 /* TTMTasklistMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D102B51991ABBE00D30237 /* TTMTasklistMetadata.m */; };
 		00D531271CACA285007EF487 /* TTMTask_IsHidden_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D531261CACA285007EF487 /* TTMTask_IsHidden_UnitTests.m */; };
 		00D5312A1CACC3C7007EF487 /* TTMPredicateEditorHiddenRowTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D531291CACC3C7007EF487 /* TTMPredicateEditorHiddenRowTemplate.m */; };
 		00DA4A1D1D5BBEB600CFF2B1 /* TTMPredicateEditorTextRowTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DA4A1C1D5BBEB600CFF2B1 /* TTMPredicateEditorTextRowTemplate.m */; };
@@ -80,6 +79,7 @@
 		B95836682325E83C00CA4337 /* TTMAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95836652325BC4100CA4337 /* TTMAppDelegate.swift */; };
 		B958366A2325FBC200CA4337 /* FontNameTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95836692325FBC200CA4337 /* FontNameTransformer.swift */; };
 		B958366C2326E09500CA4337 /* TTMDateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B958366B2326E09500CA4337 /* TTMDateUtility.swift */; };
+		B9BA7FB223284898008AD945 /* TTMTasklistMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BA7FB123284898008AD945 /* TTMTasklistMetadata.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,8 +184,6 @@
 		00B4CBC818B43E8500313DAA /* TTMTask_ReplaceText_UnitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTMTask_ReplaceText_UnitTests.m; sourceTree = "<group>"; };
 		00B8C82318E48FFF008D9E48 /* TTMFieldEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMFieldEditor.h; sourceTree = "<group>"; };
 		00B8C82418E48FFF008D9E48 /* TTMFieldEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMFieldEditor.m; sourceTree = "<group>"; };
-		00D102B41991ABBE00D30237 /* TTMTasklistMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMTasklistMetadata.h; sourceTree = "<group>"; };
-		00D102B51991ABBE00D30237 /* TTMTasklistMetadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTasklistMetadata.m; sourceTree = "<group>"; };
 		00D531261CACA285007EF487 /* TTMTask_IsHidden_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_IsHidden_UnitTests.m; sourceTree = "<group>"; };
 		00D531281CACC3C7007EF487 /* TTMPredicateEditorHiddenRowTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMPredicateEditorHiddenRowTemplate.h; sourceTree = "<group>"; };
 		00D531291CACC3C7007EF487 /* TTMPredicateEditorHiddenRowTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMPredicateEditorHiddenRowTemplate.m; sourceTree = "<group>"; };
@@ -209,6 +207,7 @@
 		B95836652325BC4100CA4337 /* TTMAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTMAppDelegate.swift; sourceTree = "<group>"; };
 		B95836692325FBC200CA4337 /* FontNameTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontNameTransformer.swift; sourceTree = "<group>"; };
 		B958366B2326E09500CA4337 /* TTMDateUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTMDateUtility.swift; sourceTree = "<group>"; };
+		B9BA7FB123284898008AD945 /* TTMTasklistMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTMTasklistMetadata.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -416,8 +415,7 @@
 		00D102B31991AB8400D30237 /* Metadata Model */ = {
 			isa = PBXGroup;
 			children = (
-				00D102B41991ABBE00D30237 /* TTMTasklistMetadata.h */,
-				00D102B51991ABBE00D30237 /* TTMTasklistMetadata.m */,
+				B9BA7FB123284898008AD945 /* TTMTasklistMetadata.swift */,
 			);
 			name = "Metadata Model";
 			sourceTree = "<group>";
@@ -578,6 +576,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B958366A2325FBC200CA4337 /* FontNameTransformer.swift in Sources */,
+				B9BA7FB223284898008AD945 /* TTMTasklistMetadata.swift in Sources */,
 				B958366C2326E09500CA4337 /* TTMDateUtility.swift in Sources */,
 				002EAE5918DBD24C008E7517 /* TTMAppController.m in Sources */,
 				00EAAB9A18E1CF79009CBE8C /* TTMPredicateEditorDueRowTemplate.m in Sources */,
@@ -586,7 +585,6 @@
 				006062D818EC6B0800D147F2 /* NSUserDefaults+myColorSupport.m in Sources */,
 				00930EAD18B5371B0064D41B /* TTMTask.m in Sources */,
 				00F3961218C6AC010002EA3F /* TTMTableView.m in Sources */,
-				00D102B61991ABBE00D30237 /* TTMTasklistMetadata.m in Sources */,
 				00DA4A1D1D5BBEB600CFF2B1 /* TTMPredicateEditorTextRowTemplate.m in Sources */,
 				0086C98518B54F1A00A427AA /* TTMTableViewDelegate.m in Sources */,
 				007B835F1A5A415300A4D5F7 /* TTMPredicateEditorThresholdRowTemplate.m in Sources */,
@@ -803,6 +801,7 @@
 				BUNDLE_LOADER = "";
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				EXCLUDED_SOURCE_FILE_NAMES = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -828,6 +827,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				EXCLUDED_SOURCE_FILE_NAMES = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

@@ -52,7 +52,6 @@
 #import "TTMFilterPredicates.h"
 #import "TTMFieldEditor.h"
 #import "RegExCategories.h"
-#import "TTMTasklistMetadata.h"
 #import "TTMDocumentStatusBarText.h"
 
 @implementation TTMDocument
