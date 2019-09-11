@@ -116,7 +116,7 @@ extern NSString* const TTMHideHiddenTasks;
  * @abstract This method returns a list of tags available for the user to insert into the status
  * bar format string.
  */
-+ (NSArray*)availableTags;
++ (NSArray<NSString *> *)availableTags;
 
 /*!
  * @method defaultFormat:

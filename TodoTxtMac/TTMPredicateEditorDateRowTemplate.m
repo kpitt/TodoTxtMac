@@ -49,7 +49,7 @@
 
 @implementation TTMPredicateEditorDateRowTemplate
 
-- (NSPredicate*)predicateWithSubpredicates:(NSArray *)subpredicates {
+- (NSPredicate*)predicateWithSubpredicates:(NSArray<NSPredicate *> *)subpredicates {
     NSPredicate *p = [super predicateWithSubpredicates:subpredicates];
 
     if ([p isKindOfClass:[NSComparisonPredicate class]]) {

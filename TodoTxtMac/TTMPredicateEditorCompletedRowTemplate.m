@@ -102,8 +102,8 @@
 
 //MARK: - NSPredicateEditorRowTemplate Method Overrides
 
-- (NSArray*)templateViews {
-    NSMutableArray *newTemplateViews = [[super templateViews] mutableCopy];
+- (NSArray<NSView *> *)templateViews {
+    NSMutableArray<NSView *> *newTemplateViews = [[super templateViews] mutableCopy];
     [newTemplateViews replaceObjectAtIndex:0 withObject:self.keypathPopUp];
     [newTemplateViews replaceObjectAtIndex:2 withObject:self.boolPopUp];
     return newTemplateViews;
@@ -116,7 +116,7 @@
     }
 }
 
-- (NSPredicate*)predicateWithSubpredicates:(NSArray*)subpredicates {
+- (NSPredicate*)predicateWithSubpredicates:(NSArray<NSPredicate *> *)subpredicates {
 	NSPredicate *newPredicate =
         [NSComparisonPredicate
          predicateWithLeftExpression:[[self.keypathPopUp selectedItem] representedObject]

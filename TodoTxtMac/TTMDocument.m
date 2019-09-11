@@ -217,7 +217,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     // Because inconsistent line endings can exist, for files with Windows line endings,
     // we remove the carriage return character prior to splitting the file contents into
     // an array of strings.
-    NSArray *rawTextStrings = (self.usesWindowsLineEndings) ?
+    NSArray<NSString *> *rawTextStrings = (self.usesWindowsLineEndings) ?
         [[fileContents stringByReplacingOccurrencesOfString:@"\r" withString:@""] componentsSeparatedByString:@"\n"] :
         [fileContents componentsSeparatedByString:@"\n"];
 
@@ -245,7 +245,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     [self.undoManager setActionName:NSLocalizedString(@"Reload File", @"Undo Reload File")];
     
     // retain selected items, because selection is lost when the file/arrayController is reloaded
-    NSArray *taskListSelectedItemsList = [self getTaskListSelections];
+    NSArray<TTMTask *> *taskListSelectedItemsList = [self getTaskListSelections];
     
     // Reload the file.
     NSError *error;
@@ -257,17 +257,17 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     [self updateTaskListMetadata];
 }
 
-- (NSArray*)getTaskListSelections {
+- (NSArray<TTMTask *> *)getTaskListSelections {
     return [[self.arrayController selectedObjects] copy];
 }
 
-- (void)setTaskListSelections:(NSArray*)taskListSelectedItems {
+- (void)setTaskListSelections:(NSArray<TTMTask *> *)taskListSelectedItems {
     if (taskListSelectedItems == nil) {
         return;
     }
 
-    NSMutableArray *selectedItems = [NSMutableArray arrayWithArray:taskListSelectedItems];
-    NSMutableArray *itemsToSelect = [NSMutableArray array];
+    NSMutableArray<TTMTask *> *selectedItems = [NSMutableArray arrayWithArray:taskListSelectedItems];
+    NSMutableArray<TTMTask *> *itemsToSelect = [NSMutableArray array];
     
     for (TTMTask *task in [self.arrayController arrangedObjects]) {
         int i = 0;
@@ -310,12 +310,12 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 
 //MARK: - Undo/Redo Methods
 
-- (void)replaceAllTasks:(NSArray*)newTasks {
+- (void)replaceAllTasks:(NSArray<TTMTask *> *)newTasks {
     [[self.undoManager prepareWithInvocationTarget:self] replaceAllTasks:[[self.arrayController arrangedObjects] copy]];
     NSRange range = NSMakeRange(0, [[self.arrayController arrangedObjects] count]);
     
     // retain selected items, because selection is lost when the file/arrayController is reloaded
-    NSArray *taskListSelectedItemsList = [self getTaskListSelections];
+    NSArray<TTMTask *> *taskListSelectedItemsList = [self getTaskListSelections];
     
     // Save the current filter number.
     NSUInteger filterNumber = self.activeFilterPredicateNumber;
@@ -340,26 +340,26 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 }
 
 
-- (void)replaceTasks:(NSArray*)oldTasks withTasks:(NSArray*)newTasks {
+- (void)replaceTasks:(NSArray<TTMTask *> *)oldTasks withTasks:(NSArray<TTMTask *> *)newTasks {
     [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
     [self.arrayController removeObjects:oldTasks];
     [self.arrayController addObjects:newTasks];
     [self refreshTaskListWithSave:YES];
 }
 
-- (void)addTasks:(NSArray*)newTasks {
+- (void)addTasks:(NSArray<TTMTask *> *)newTasks {
     [[self.undoManager prepareWithInvocationTarget:self] removeTasks:newTasks];
     [self.arrayController addObjects:newTasks];
     [self refreshTaskListWithSave:YES];
 }
 
-- (void)removeTasks:(NSArray*)oldTasks {
+- (void)removeTasks:(NSArray<TTMTask *> *)oldTasks {
     [[self.undoManager prepareWithInvocationTarget:self] addTasks:oldTasks];
     [self.arrayController removeObjects:oldTasks];
     [self refreshTaskListWithSave:YES];
 }
 
-- (void)undoArchiveTasks:(NSArray*)archivedTasks fromArchiveFile:(NSString*)archiveFilePath {
+- (void)undoArchiveTasks:(NSArray<TTMTask *> *)archivedTasks fromArchiveFile:(NSString*)archiveFilePath {
     [self addTasks:archivedTasks];
     [self removeTasks:archivedTasks fromArchiveFile:archiveFilePath];
 }
@@ -396,14 +396,14 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     }
 }
 
-- (void)addTasksFromArray:(NSArray*)rawTextStrings
+- (void)addTasksFromArray:(NSArray<NSString *> *)rawTextStrings
       removeAllTasksFirst:(BOOL)removeAllTasksFirst
      undoActionName:(NSString*)undoActionName {
     if (removeAllTasksFirst) {
         [self removeAllTasks];
     }
     
-    NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+    NSMutableArray<TTMTask *> *newTasks = [[NSMutableArray alloc] init];
     NSUInteger newTaskId = (self.arrayController == nil) ?
                             [self.taskList count] :
                             [[self.arrayController arrangedObjects] count];
@@ -448,7 +448,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     TTMTask *newTask = [self createWorkingTaskWithRawText:newTaskText
                                                withTaskId:newTaskId];
     
-    NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+    NSMutableArray<TTMTask *> *newTasks = [[NSMutableArray alloc] init];
     [newTasks addObject:[newTask copy]];
     [[self.undoManager prepareWithInvocationTarget:self] removeTasks:newTasks];
     [self.undoManager setActionName:NSLocalizedString(@"Add New Task", @"Undo Add New Task")];
@@ -500,7 +500,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
         return;
     }
     
-    NSArray *rawTextStrings = [pasteboardText
+    NSArray<NSString *> *rawTextStrings = [pasteboardText
                                componentsSeparatedByCharactersInSet:
                                [NSCharacterSet newlineCharacterSet]];
     
@@ -525,7 +525,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 
 - (void)refreshTaskListWithSave:(BOOL)saveToFile {
     // retain selected items, because selection is lost when the file/arrayController is reloaded
-    NSArray *taskListSelectedItemsList = [self getTaskListSelections];
+    NSArray<TTMTask *> *taskListSelectedItemsList = [self getTaskListSelections];
 
     // Optionally save the file.
     if (saveToFile) {
@@ -588,7 +588,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 }
 
 - (void)finalizeUpdateSelectedTask:(NSString*)rawText {
-    NSArray *newTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+    NSArray<TTMTask *> *newTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
                                              copyItems:YES];
     BOOL originalTaskWasIncomplete = TRUE;
     if (self.originalTasks.count > 0) {
@@ -596,7 +596,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
         originalTaskWasIncomplete = !originalTask.isCompleted;
     }
 
-    NSMutableArray *newTaskStrings = [[NSMutableArray alloc] init];
+    NSMutableArray<NSString *> *newTaskStrings = [[NSMutableArray alloc] init];
     BOOL taskWasCompleted = NO;
     BOOL recurringTasksWereCreated = NO;
     BOOL prependDate = [[NSUserDefaults standardUserDefaults] boolForKey:@"prependDateOnNewTasks"];
@@ -637,10 +637,10 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 }
 
 - (IBAction)toggleTaskCompletion:(id)sender {
-    NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+    NSArray<TTMTask *> *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
                                              copyItems:YES];
-    NSMutableArray *newTasks = [[NSMutableArray alloc] init];
-    NSMutableArray *newTaskStrings = [[NSMutableArray alloc] init];
+    NSMutableArray<TTMTask *> *newTasks = [[NSMutableArray alloc] init];
+    NSMutableArray<NSString *> *newTaskStrings = [[NSMutableArray alloc] init];
     
     BOOL recurringTasksWereCreated = NO;
     BOOL prependDate = [[NSUserDefaults standardUserDefaults] boolForKey:@"prependDateOnNewTasks"];
@@ -687,7 +687,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     [deletePrompt addButtonWithTitle:@"Cancel"];
     [deletePrompt beginSheetModalForWindow:self.windowForSheet completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSAlertFirstButtonReturn) {
-            NSArray *oldTasks = [[NSArray alloc]
+            NSArray<TTMTask *> *oldTasks = [[NSArray alloc]
                                  initWithArray:[self.arrayController selectedObjects]
                                  copyItems:YES];
             [[self.undoManager prepareWithInvocationTarget:self] addTasks:oldTasks];
@@ -715,9 +715,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
             return;
         }
 
-        NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+        NSArray<TTMTask *> *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
                                                  copyItems:YES];
-        NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+        NSMutableArray<TTMTask *> *newTasks = [[NSMutableArray alloc] init];
         
         for (TTMTask *task in [self.arrayController selectedObjects]) {
             [task appendText:[input stringValue]];
@@ -748,9 +748,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
             return;
         }
         
-        NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+        NSArray<TTMTask *> *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
                                                  copyItems:YES];
-        NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+        NSMutableArray<TTMTask *> *newTasks = [[NSMutableArray alloc] init];
         
         for (TTMTask *task in [self.arrayController selectedObjects]) {
             [task prependText:[input stringValue]];
@@ -781,9 +781,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
             return;
         }
         
-        NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+        NSArray<TTMTask *> *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
                                                  copyItems:YES];
-        NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+        NSMutableArray<TTMTask *> *newTasks = [[NSMutableArray alloc] init];
         
         for (TTMTask *task in [self.arrayController selectedObjects]) {
             [task replaceText:[self.findText stringValue] withText:[self.replaceText stringValue]];
@@ -823,9 +823,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
             return;
         }
         
-        NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+        NSArray<TTMTask *> *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
                                                  copyItems:YES];
-        NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+        NSMutableArray<TTMTask *> *newTasks = [[NSMutableArray alloc] init];
         
         for (TTMTask *task in [self.arrayController selectedObjects]) {
             [task setPriority:priority];
@@ -843,9 +843,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 }
 
 - (IBAction)increasePriority:(id)sender {
-    NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+    NSArray<TTMTask *> *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
                                              copyItems:YES];
-    NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+    NSMutableArray<TTMTask *> *newTasks = [[NSMutableArray alloc] init];
     
     for (TTMTask *task in [self.arrayController selectedObjects]) {
         [task increasePriority];
@@ -859,9 +859,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 }
 
 - (IBAction)decreasePriority:(id)sender {
-    NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+    NSArray<TTMTask *> *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
                                              copyItems:YES];
-    NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+    NSMutableArray<TTMTask *> *newTasks = [[NSMutableArray alloc] init];
     
     for (TTMTask *task in [self.arrayController selectedObjects]) {
         [task decreasePriority];
@@ -875,9 +875,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 }
 
 - (IBAction)removePriority:(id)sender {
-    NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+    NSArray<TTMTask *> *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
                                              copyItems:YES];
-    NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+    NSMutableArray<TTMTask *> *newTasks = [[NSMutableArray alloc] init];
     
     for (TTMTask *task in [self.arrayController selectedObjects]) {
         [task removePriority];
@@ -906,9 +906,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     // Define the completion handler for the modal sheet.
     void (^completionHandler)(NSModalResponse returnCode) = ^(NSModalResponse returnCode) {
         if (returnCode == NSAlertFirstButtonReturn) {
-            NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+            NSArray<TTMTask *> *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
                                                      copyItems:YES];
-            NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+            NSMutableArray<TTMTask *> *newTasks = [[NSMutableArray alloc] init];
             
             for (TTMTask *task in [self.arrayController selectedObjects]) {
                 [task setDueDate:[input dateValue]];
@@ -927,9 +927,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 }
 
 - (IBAction)increaseDueDateByOneDay:(id)sender {
-    NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+    NSArray<TTMTask *> *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
                                              copyItems:YES];
-    NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+    NSMutableArray<TTMTask *> *newTasks = [[NSMutableArray alloc] init];
     
     for (TTMTask *task in [self.arrayController selectedObjects]) {
         [task incrementDueDate:1];
@@ -943,9 +943,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 }
 
 - (IBAction)decreaseDueDateByOneDay:(id)sender {
-    NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+    NSArray<TTMTask *> *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
                                              copyItems:YES];
-    NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+    NSMutableArray<TTMTask *> *newTasks = [[NSMutableArray alloc] init];
     
     for (TTMTask *task in [self.arrayController selectedObjects]) {
         [task decrementDueDate:1];
@@ -959,9 +959,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 }
 
 - (IBAction)removeDueDate:(id)sender {
-    NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+    NSArray<TTMTask *> *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
                                              copyItems:YES];
-    NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+    NSMutableArray<TTMTask *> *newTasks = [[NSMutableArray alloc] init];
     
     for (TTMTask *task in [self.arrayController selectedObjects]) {
         [task removeDueDate];
@@ -989,9 +989,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
         if (returnCode == NSAlertFirstButtonReturn &&
             [[input stringValue] length] != 0 &&
             [input integerValue] != 0) {
-            NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+            NSArray<TTMTask *> *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
                                                      copyItems:YES];
-            NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+            NSMutableArray<TTMTask *> *newTasks = [[NSMutableArray alloc] init];
             
             for (TTMTask *task in [self.arrayController selectedObjects]) {
                 [task postponeTask:[input integerValue]];
@@ -1025,9 +1025,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     // Define the completion handler for the modal sheet.
     void (^completionHandler)(NSModalResponse returnCode) = ^(NSModalResponse returnCode) {
         if (returnCode == NSAlertFirstButtonReturn) {
-            NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+            NSArray<TTMTask *> *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
                                                      copyItems:YES];
-            NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+            NSMutableArray<TTMTask *> *newTasks = [[NSMutableArray alloc] init];
             
             for (TTMTask *task in [self.arrayController selectedObjects]) {
                 [task setThresholdDate:[input dateValue]];
@@ -1047,9 +1047,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 
 
 - (IBAction)increaseThresholdDateByOneDay:(id)sender {
-    NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+    NSArray<TTMTask *> *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
                                              copyItems:YES];
-    NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+    NSMutableArray<TTMTask *> *newTasks = [[NSMutableArray alloc] init];
     
     for (TTMTask *task in [self.arrayController selectedObjects]) {
         [task incrementThresholdDate:1];
@@ -1063,9 +1063,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 }
 
 - (IBAction)decreaseThresholdDateByOneDay:(id)sender {
-    NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+    NSArray<TTMTask *> *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
                                              copyItems:YES];
-    NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+    NSMutableArray<TTMTask *> *newTasks = [[NSMutableArray alloc] init];
     
     for (TTMTask *task in [self.arrayController selectedObjects]) {
         [task decrementThresholdDate:1];
@@ -1079,9 +1079,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 }
 
 - (IBAction)removeThresholdDate:(id)sender {
-    NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+    NSArray<TTMTask *> *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
                                              copyItems:YES];
-    NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+    NSMutableArray<TTMTask *> *newTasks = [[NSMutableArray alloc] init];
     
     for (TTMTask *task in [self.arrayController selectedObjects]) {
         [task removeThresholdDate];
@@ -1157,7 +1157,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
                                      selector:@selector(localizedCaseInsensitiveCompare:)];
     
     // apply sort descriptors, depending on sort type, to the arrayController
-    NSArray *sortDescriptors;
+    NSArray<NSSortDescriptor *> *sortDescriptors;
     switch (sortType) {
         case TTMSortOrderInFile:
             sortDescriptors = @[taskIdDescriptor];
@@ -1274,7 +1274,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     // Collect indexes of all completed tasks, and build string containing all completed tasks.
     NSMutableIndexSet *completedTasksIndexSet = [[NSMutableIndexSet alloc] init];
     NSMutableString *completedTasksString = [[NSMutableString alloc] init];
-    NSMutableArray *archivedTasks = [[NSMutableArray alloc] init];
+    NSMutableArray<TTMTask *> *archivedTasks = [[NSMutableArray alloc] init];
     for (NSUInteger i = 0; i < [[self.arrayController arrangedObjects] count]; i++) {
         TTMTask *task = [[self.arrayController arrangedObjects] objectAtIndex:i];
         if (task.isCompleted) {
@@ -1327,7 +1327,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     }
 }
 
-- (void)removeTasks:(NSArray*)tasksToRemove fromArchiveFile:(NSString*)archiveFilePath {
+- (void)removeTasks:(NSArray<TTMTask *> *)tasksToRemove fromArchiveFile:(NSString*)archiveFilePath {
     NSURL *archiveFileURL = [[NSURL alloc] initFileURLWithPath:archiveFilePath];
     NSError *err = [[NSError alloc] init];
     NSString *fileContents = [[NSString alloc] initWithContentsOfURL:archiveFileURL
@@ -1336,7 +1336,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     
     BOOL usesWindowsLineEndings = ([fileContents rangeOfString:@"\r\n"].location != NSNotFound);
     NSString *preferredLineEnding = (usesWindowsLineEndings) ? @"\r\n" : @"\n";
-    NSMutableArray *rawTextStrings = [[NSMutableArray alloc] initWithArray:[fileContents componentsSeparatedByString:preferredLineEnding]];
+    NSMutableArray<NSString *> *rawTextStrings = [[NSMutableArray alloc] initWithArray:[fileContents componentsSeparatedByString:preferredLineEnding]];
 
     for (TTMTask *task in tasksToRemove) {
         for (long j = [rawTextStrings count] - 1; j > 0; j--) {
@@ -1364,7 +1364,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 // Override normal copy handler to copy selected tasks from the task list.
 // This does not get called when the field editor is active.
 - (IBAction)copy:(id)sender {
-    NSMutableArray *selectedTasksRawText = [[NSMutableArray alloc] init];
+    NSMutableArray<NSString *> *selectedTasksRawText = [[NSMutableArray alloc] init];
     NSIndexSet *selectedRowIndexes = [self.arrayController selectionIndexes];
     
     for (NSUInteger i = [selectedRowIndexes firstIndex];
@@ -1383,7 +1383,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 // Override normal cut handler to cut selected tasks from the task list.
 // This does not get called when the field editor is active.
 - (IBAction)cut:(id)sender {
-    NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+    NSArray<TTMTask *> *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
                                              copyItems:YES];
     [[self.undoManager prepareWithInvocationTarget:self] addTasks:oldTasks];
     [self.undoManager setActionName:NSLocalizedString(@"Cut", @"Undo Cut")];

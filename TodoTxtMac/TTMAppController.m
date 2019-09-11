@@ -244,7 +244,7 @@ NSString *const TodoFileArgument = @"todo-file";
 //MARK: - Reload All Methods
 
 - (IBAction)reloadAll:(id)sender {
-    NSArray *documents = [[NSDocumentController sharedDocumentController] documents];
+    NSArray<NSDocument *> *documents = [[NSDocumentController sharedDocumentController] documents];
     [documents enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         [(TTMDocument*)obj reloadFile:self];
     }];
@@ -253,7 +253,7 @@ NSString *const TodoFileArgument = @"todo-file";
 //MARK: - Visual Refresh Methods
 
 - (IBAction)visualRefreshAll:(id)sender {
-    NSArray *documents = [[NSDocumentController sharedDocumentController] documents];
+    NSArray<NSDocument *> *documents = [[NSDocumentController sharedDocumentController] documents];
     [documents enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         [(TTMDocument*)obj visualRefreshOnly:self];
     }];

@@ -52,7 +52,7 @@
 @property (nonatomic, retain) IBOutlet TTMAppController *appController;
 @property (nonatomic, retain) NSFont *selectedFont;
 @property (nonatomic, retain) IBOutlet NSTextField *statusBarFormat;
-@property (nonatomic, retain) NSArray *availableStatusBarTags;
+@property (nonatomic, retain) NSArray<NSString *> *availableStatusBarTags;
 @property (nonatomic, retain) IBOutlet NSArrayController *statusBarTags;
 
 //MARK: - Choose File Methods

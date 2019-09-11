@@ -80,17 +80,17 @@
  * string.
  */
 
-@interface RxMatch : NSObject
-@property (retain) NSString* value;    /* The substring that matched the expression. */
-@property (assign) NSRange   range;    /* The range of the original string that was matched. */
-@property (retain) NSArray*  groups;   /* Each object is an RxMatchGroup. */
-@property (retain) NSString* original; /* The full original string that was matched against.  */
-@end
-
-
 @interface RxMatchGroup : NSObject
 @property (retain) NSString* value;
 @property (assign) NSRange range;
+@end
+
+
+@interface RxMatch : NSObject
+@property (retain) NSString* value;    /* The substring that matched the expression. */
+@property (assign) NSRange   range;    /* The range of the original string that was matched. */
+@property (retain) NSArray<RxMatchGroup *> *groups;   /* Each object is an RxMatchGroup. */
+@property (retain) NSString* original; /* The full original string that was matched against.  */
 @end
 
 
@@ -184,7 +184,7 @@
  *  => @[@"A", @"dog", @"cat"]
  */
 
-- (NSArray*) split:(NSString*)str;
+- (NSArray<NSString *> *) split:(NSString*)str;
 
 
 /**
@@ -232,7 +232,7 @@
  *  => @[ @"me@example.com", @"you@example.com" ]
  */
 
-- (NSArray*) matches:(NSString*)str;
+- (NSArray<NSString *> *) matches:(NSString*)str;
 
 
 /**
@@ -256,7 +256,7 @@
  * NSArray* matches = [str matchesWithDetails:RX(@"\\w+[@]\\w+[.](\\w+)")];
  */
 
-- (NSArray*) matchesWithDetails:(NSString*)str;
+- (NSArray<RxMatch *> *) matchesWithDetails:(NSString*)str;
 
 
 /**
@@ -345,7 +345,7 @@
  *  => @[@"A", @"dog", @"cat"]
  */
 
-- (NSArray*) split:(NSRegularExpression*)rx;
+- (NSArray<NSString *> *) split:(NSRegularExpression*)rx;
 
 
 /**
@@ -393,7 +393,7 @@
  *  => @[ @"me@example.com", @"you@example.com" ]
  */
 
-- (NSArray*) matches:(NSRegularExpression*)rx;
+- (NSArray<NSString *> *) matches:(NSRegularExpression*)rx;
 
 
 /**
@@ -417,7 +417,7 @@
  * NSArray* matches = [str matchesWithDetails:RX(@"\\w+[@]\\w+[.](\\w+)")];
  */
 
-- (NSArray*) matchesWithDetails:(NSRegularExpression*)rx;
+- (NSArray<RxMatch *> *) matchesWithDetails:(NSRegularExpression*)rx;
 
 
 /**

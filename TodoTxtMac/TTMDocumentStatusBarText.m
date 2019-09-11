@@ -164,7 +164,7 @@ NSString* const TTMHideHiddenTasks = @"{Hide Hidden Tasks}";
     return text;
 }
 
-+ (NSArray*)availableTags {
++ (NSArray<NSString *> *)availableTags {
     return @[TTMAllStatusBarAllTaskCountTag,
              TTMAllCompletedTaskCount,
              TTMAllIncompleteTaskCount,

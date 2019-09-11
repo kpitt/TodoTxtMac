@@ -75,7 +75,7 @@ typedef enum : NSUInteger {
 //MARK: - Properties
 
 // Data elements related to the task list
-@property (nonatomic, copy) NSMutableArray *taskList;
+@property (nonatomic, copy) NSMutableArray<TTMTask *> *taskList;
 @property (nonatomic) BOOL usesWindowsLineEndings;
 @property (nonatomic, copy) NSString *preferredLineEnding;
 
@@ -112,7 +112,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, retain) IBOutlet NSWindow *tasklistMetadataSheet;
 
 // Task objects for undo/redo of task edits
-@property (nonatomic, copy) NSArray *originalTasks;
+@property (nonatomic, copy) NSArray<TTMTask *> *originalTasks;
 
 @property (nonatomic, retain) NSDate *lastInternalModificationDate;
 
@@ -131,7 +131,7 @@ typedef enum : NSUInteger {
  * method reloads the task list file, to allow for selections to be retained (as much as possible)
  * after the user reloads the file.
  */
-- (NSMutableArray*)getTaskListSelections;
+- (NSMutableArray<TTMTask *> *)getTaskListSelections;
 
 /*!
  * @method setTaskListSelections:
@@ -144,7 +144,7 @@ typedef enum : NSUInteger {
  * from the list will not be selected after reload. For duplicate tasks (those with identical
  * raw text), the first of the duplicate tasks will be selected.
  */
-- (void)setTaskListSelections:(NSArray*)taskListSelectedItems;
+- (void)setTaskListSelections:(NSArray<TTMTask *> *)taskListSelectedItems;
 
 //MARK: - Undo/Redo Methods
 
@@ -154,35 +154,35 @@ typedef enum : NSUInteger {
  * It is used for undo/redo operations, namely to undo the reload file command.
  */
 
-- (void)replaceAllTasks:(NSArray*)newTasks;
+- (void)replaceAllTasks:(NSArray<TTMTask *> *)newTasks;
 
 /*!
  * @method replaceTasks:withTasks:
  * @abstract This method replaces one array of tasks with another in the task list. 
  * It is used for undo/redo operations.
  */
-- (void)replaceTasks:(NSArray*)oldTasks withTasks:(NSArray*)newTasks;
+- (void)replaceTasks:(NSArray<TTMTask *> *)oldTasks withTasks:(NSArray<TTMTask *> *)newTasks;
 
 /*!
  * @method addTasks:
  * @abstract This method adds an array of tasks to the task list.
  * It is used for undo/redo operations.
  */
-- (void)addTasks:(NSArray*)newTasks;
+- (void)addTasks:(NSArray<TTMTask *> *)newTasks;
 
 /*!
  * @method addTasks:
  * @abstract This method removes an array of tasks from the task list.
  * It is used for undo/redo operations.
  */
-- (void)removeTasks:(NSArray*)oldTasks;
+- (void)removeTasks:(NSArray<TTMTask *> *)oldTasks;
 
 /*!
  * @method addTasks:
  * @abstract This method performs and undo for the archive command.
  * It is used for undo/redo operations.
  */
-- (void)undoArchiveTasks:(NSArray*)archivedTasks fromArchiveFile:(NSString*)archiveFilePath;
+- (void)undoArchiveTasks:(NSArray<TTMTask *> *)archivedTasks fromArchiveFile:(NSString*)archiveFilePath;
 
 //MARK: - Add/Remove Task(s) methods
 
@@ -214,7 +214,7 @@ typedef enum : NSUInteger {
  * @param removeAllRecordsFirst Set to YES if all records should be removed prior to adding tasks.
  * @param undoActionName Set to undo action name; blank if operation is not undoable
  */
-- (void)addTasksFromArray:(NSArray*)rawTextStrings
+- (void)addTasksFromArray:(NSArray<NSString *> *)rawTextStrings
       removeAllTasksFirst:(BOOL)removeAllRecordsFirst
            undoActionName:(NSString*)undoActionName;
 
@@ -490,7 +490,7 @@ typedef enum : NSUInteger {
  */
 - (void)appendString:(NSString*)content toArchiveFile:(NSString*)archiveFilePath;
 
-- (void)removeTasks:(NSArray*)tasksToRemove fromArchiveFile:(NSString*)archiveFilePath;
+- (void)removeTasks:(NSArray<TTMTask *> *)tasksToRemove fromArchiveFile:(NSString*)archiveFilePath;
 
 //MARK: - Find Methods
 

@@ -125,8 +125,8 @@
 
 //MARK: - NSPredicateEditorRowTemplate Method Overrides
 
-- (NSArray*)templateViews {
-    NSMutableArray *newTemplateViews = [[super templateViews] mutableCopy];
+- (NSArray<NSView *> *)templateViews {
+    NSMutableArray<NSView *> *newTemplateViews = [[super templateViews] mutableCopy];
     [newTemplateViews replaceObjectAtIndex:0 withObject:self.keypathPopUp];
     [newTemplateViews replaceObjectAtIndex:2 withObject:self.thresholdStatePopUp];
     return newTemplateViews;
@@ -139,7 +139,7 @@
     }
 }
 
-- (NSPredicate*)predicateWithSubpredicates:(NSArray*)subpredicates {
+- (NSPredicate*)predicateWithSubpredicates:(NSArray<NSPredicate *> *)subpredicates {
     NSPredicate *p = [super predicateWithSubpredicates:subpredicates];
     NSComparisonPredicate *comparison = (NSComparisonPredicate*)p;
     NSPredicate *newPredicate =

@@ -70,7 +70,7 @@ NSString *const notContainsFormatPrefix = @"NOT rawText CONTAINS[cd]";
     [super setPredicate:predicate];
 }
 
-- (NSPredicate*)predicateWithSubpredicates:(NSArray*)subpredicates {
+- (NSPredicate*)predicateWithSubpredicates:(NSArray<NSPredicate *> *)subpredicates {
     NSPredicate *predicate = [super predicateWithSubpredicates:subpredicates];
     return [self swapPredicateFormatPrefix:inFormatPrefix withPrefix:notContainsFormatPrefix forPredicate:predicate];
 }

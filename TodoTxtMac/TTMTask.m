@@ -398,7 +398,7 @@ static NSString * const HiddenPattern = @"(?<=^|[ ])(h:1)(?=[ ]|$)";
 
     NSString *rawTextPrefix = [self.rawText substringWithRange:NSMakeRange(0, insertionIndex - 1)];
     NSString *rawTextRemainder = [self.rawText substringFromIndex:insertionIndex];
-    NSArray *rawTextComponents = @[rawTextPrefix, textToPrepend, rawTextRemainder];
+    NSArray<NSString *> *rawTextComponents = @[rawTextPrefix, textToPrepend, rawTextRemainder];
     self.RawText = [rawTextComponents componentsJoinedByString:@" "];
 
 //    NSString *separator = @" ";

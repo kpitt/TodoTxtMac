@@ -50,8 +50,8 @@
 
 //MARK: - Properties
 
-@property (nonatomic, retain) NSArray *projectsArray;
-@property (nonatomic, retain) NSArray *contextsArray;
+@property (nonatomic, retain) NSArray<NSString *> *projectsArray;
+@property (nonatomic, retain) NSArray<NSString *> *contextsArray;
 @property (nonatomic, retain) NSTimer *completionTimer;
 @property (nonatomic) NSUInteger nextInsertionIndex;
 @property (nonatomic) NSString *originalValue;

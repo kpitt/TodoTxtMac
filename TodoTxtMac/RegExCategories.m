@@ -62,19 +62,19 @@
     return range.location == NSNotFound ? -1 : (int)range.location;
 }
 
-- (NSArray*) split:(NSString *)str
+- (NSArray<NSString *> *) split:(NSString *)str
 {
     NSRange range = NSMakeRange(0, str.length);
     
     //get locations of matches
-    NSMutableArray* matchingRanges = [NSMutableArray array];
-    NSArray* matches = [self matchesInString:str options:0 range:range];
+    NSMutableArray<NSValue *> *matchingRanges = [NSMutableArray array];
+    NSArray<NSTextCheckingResult *> *matches = [self matchesInString:str options:0 range:range];
     for(NSTextCheckingResult* match in matches) {
         [matchingRanges addObject:[NSValue valueWithRange:match.range]];
     }
     
     //invert ranges - get ranges of non-matched pieces
-    NSMutableArray* pieceRanges = [NSMutableArray array];
+    NSMutableArray<NSValue *> *pieceRanges = [NSMutableArray array];
     
     //add first range
     [pieceRanges addObject:[NSValue valueWithRange:NSMakeRange(0,
@@ -89,7 +89,7 @@
     }
     
     //use split ranges to select pieces
-    NSMutableArray* pieces = [NSMutableArray array];
+    NSMutableArray<NSString *> * pieces = [NSMutableArray array];
     for(NSValue* val in pieceRanges) {
         NSRange range = [val rangeValue];
         NSString* piece = [str substringWithRange:range];
@@ -113,7 +113,7 @@
     NSMutableString* result = [string mutableCopy];
     
     //get matches
-    NSArray* matches = [self matchesInString:string options:0 range:NSMakeRange(0, string.length)];
+    NSArray<NSTextCheckingResult *> *matches = [self matchesInString:string options:0 range:NSMakeRange(0, string.length)];
     
     //replace each match (right to left so indexing doesn't get messed up)
     for (int i=(int)matches.count-1; i>=0; i--) {
@@ -135,7 +135,7 @@
     NSMutableString* replaced = [string mutableCopy];
     
     //get matches
-    NSArray* matches = [self matchesInString:string options:0 range:NSMakeRange(0, string.length)];
+    NSArray<NSTextCheckingResult *> *matches = [self matchesInString:string options:0 range:NSMakeRange(0, string.length)];
     
     //replace each match (right to left so indexing doesn't get messed up)
     for (int i=(int)matches.count-1; i>=0; i--) {
@@ -148,11 +148,11 @@
     return replaced;
 }
 
-- (NSArray*) matches:(NSString*)str
+- (NSArray<NSString *> *) matches:(NSString*)str
 {
-    NSMutableArray* matches = [NSMutableArray array];
+    NSMutableArray<NSString *> *matches = [NSMutableArray array];
     
-    NSArray* results = [self matchesInString:str options:0 range:NSMakeRange(0, str.length)];
+    NSArray<NSTextCheckingResult *> *results = [self matchesInString:str options:0 range:NSMakeRange(0, str.length)];
     for (NSTextCheckingResult* result in results) {
         NSString* match = [str substringWithRange:result.range];
         [matches addObject:match];
@@ -178,7 +178,7 @@
     match.value = result.range.length ? [original substringWithRange:result.range] : nil;
     
     //groups
-    NSMutableArray* groups = [NSMutableArray array];
+    NSMutableArray<RxMatchGroup *> *groups = [NSMutableArray array];
     match.groups = groups;
     for(int i=0; i<result.numberOfRanges; i++){
         RxMatchGroup* group = [[RxMatchGroup alloc] init];
@@ -190,11 +190,11 @@
     return match;
 }
 
-- (NSArray*) matchesWithDetails:(NSString*)str
+- (NSArray<RxMatch *> *) matchesWithDetails:(NSString*)str
 {
-    NSMutableArray* matches = [NSMutableArray array];
+    NSMutableArray<RxMatch *> *matches = [NSMutableArray array];
     
-    NSArray* results = [self matchesInString:str options:0 range:NSMakeRange(0, str.length)];
+    NSArray<NSTextCheckingResult *> *results = [self matchesInString:str options:0 range:NSMakeRange(0, str.length)];
     for (NSTextCheckingResult* result in results) {
         [matches addObject:[self resultToMatch:result original:str]];
     }
@@ -204,7 +204,7 @@
 
 - (RxMatch*) firstMatchWithDetails:(NSString*)str
 {
-    NSArray* results = [self matchesInString:str options:0 range:NSMakeRange(0, str.length)];
+    NSArray<NSTextCheckingResult *> *results = [self matchesInString:str options:0 range:NSMakeRange(0, str.length)];
     
     if (results.count == 0)
         return nil;
@@ -243,7 +243,7 @@
     return [rx indexOf:self];
 }
 
-- (NSArray*) split:(NSRegularExpression*)rx
+- (NSArray<NSString *> *) split:(NSRegularExpression*)rx
 {
     return [rx split:self];
 }
@@ -263,7 +263,7 @@
     return [rx replace:self withDetailsBlock:replacer];
 }
 
-- (NSArray*) matches:(NSRegularExpression*)rx
+- (NSArray<NSString *> *) matches:(NSRegularExpression*)rx
 {
     return [rx matches:self];
 }
@@ -273,7 +273,7 @@
     return [rx firstMatch:self];
 }
 
-- (NSArray*) matchesWithDetails:(NSRegularExpression*)rx
+- (NSArray<RxMatch *> *) matchesWithDetails:(NSRegularExpression*)rx
 {
     return [rx matchesWithDetails:self];
 }

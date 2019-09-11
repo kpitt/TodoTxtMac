@@ -54,7 +54,7 @@
     self = [super initWithWindow:window];
     if (self) {
         // Initialization code here.
-        _availableStatusBarTags = [NSArray arrayWithArray:[TTMDocumentStatusBarText availableTags]];
+        _availableStatusBarTags = [NSArray<NSString *> arrayWithArray:[TTMDocumentStatusBarText availableTags]];
     }
     return self;
 }

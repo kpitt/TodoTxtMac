@@ -148,7 +148,7 @@
  * @discussion It is necessary to override this method to handle autocompletion of contexts and
  * projects, which start with "@" and "+" respectively.
  */
-- (NSArray*)completionsForPartialWordRange:(NSRange)charRange
+- (NSArray<NSString *> *)completionsForPartialWordRange:(NSRange)charRange
                        indexOfSelectedItem:(NSInteger*)index {
     // Check the character range for "@" and "+".
     NSString *partialString = [[self string] substringWithRange:charRange];
@@ -164,13 +164,13 @@
     }
 }
 
-- (NSArray*)partialCompletionsFromSourceArray:(NSArray*)sourceArray
+- (NSArray<NSString *> *)partialCompletionsFromSourceArray:(NSArray<NSString *> *)sourceArray
                                 partialString:(NSString*)partialString{
     if (sourceArray == nil) {
         return nil;
     }
     
-    NSMutableArray *returnArray = [[NSMutableArray alloc] init];
+    NSMutableArray<NSString *> *returnArray = [[NSMutableArray alloc] init];
     for (NSString *str in sourceArray) {
         if ([[str uppercaseString] hasPrefix:[partialString uppercaseString]]) {
             [returnArray addObject:str];

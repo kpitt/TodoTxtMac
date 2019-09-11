@@ -64,7 +64,7 @@
     static NSPredicate *defaultPredicate = nil;
     if (defaultPredicate == nil) {
         NSPredicate *defaultSubPredicate = [NSPredicate predicateWithFormat:@"rawText contains ''"];
-        NSArray *subPredicates = @[defaultSubPredicate];
+        NSArray<NSPredicate *> *subPredicates = @[defaultSubPredicate];
         defaultPredicate = [NSCompoundPredicate
                             andPredicateWithSubpredicates:subPredicates];
     }
@@ -94,7 +94,7 @@
 
 
 + (NSPredicate*)filterPredicateWithHideOptions {
-    NSMutableArray *subPredicates = [[NSMutableArray alloc] init];
+    NSMutableArray<NSPredicate*> *subPredicates = [[NSMutableArray alloc] init];
     if ([self hideFutureTasks]) {
         [subPredicates addObject:[self hideFutureTasksFilterSubPredicate]];
     }
@@ -145,7 +145,7 @@
     NSPredicate *filterPresetSubPredicate = [self getFilterPredicateFromUserDefaultsKey:[self keyFromPresetNumber:presetNumber]];
 
     if ([self hideFutureTasks] || [self hideHiddenTasks]) {
-        NSArray *subPredicates = @[defaultPredicate, filterPresetSubPredicate];
+        NSArray<NSPredicate *> *subPredicates = @[defaultPredicate, filterPresetSubPredicate];
         return [NSCompoundPredicate andPredicateWithSubpredicates:subPredicates];
     } else {
         return filterPresetSubPredicate;

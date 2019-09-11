@@ -50,7 +50,7 @@
 @implementation NSMutableAttributedString (ColorRegExMatches)
 
 - (void)applyColor:(NSColor*)color toRegexPatternMatches:(NSString*)regExPattern {
-    NSArray *matches = [self.string matchesWithDetails:RX(regExPattern)];
+    NSArray<RxMatch *> *matches = [self.string matchesWithDetails:RX(regExPattern)];
     for (RxMatch *match in matches) {
         [self addAttribute:NSForegroundColorAttributeName
                    value:color
