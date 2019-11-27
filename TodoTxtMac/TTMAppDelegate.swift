@@ -48,6 +48,7 @@
 
 import Foundation
 
+@NSApplicationMain
 class TTMAppDelegate : NSObject, NSApplicationDelegate {
     @IBOutlet var appController: TTMAppController?
 
