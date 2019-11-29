@@ -6,4 +6,4 @@
 
 #import "TTMAppController.h"
 #import "TTMFilterPredicates.h"
-#import "TTMTask.h"
+#import "TTMTaskBase.h"

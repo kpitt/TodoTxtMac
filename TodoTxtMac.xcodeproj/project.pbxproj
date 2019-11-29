@@ -51,7 +51,7 @@
 		0080EAA518D3E96C0014DDD1 /* TTMPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0080EAA418D3E96C0014DDD1 /* TTMPreferences.xib */; };
 		0086C98518B54F1A00A427AA /* TTMTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0086C98418B54F1A00A427AA /* TTMTableViewDelegate.m */; };
 		00930EAA18B536B00064D41B /* RegExCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 00930EA918B536B00064D41B /* RegExCategories.m */; };
-		00930EAD18B5371B0064D41B /* TTMTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 00930EAC18B5371B0064D41B /* TTMTask.m */; };
+		00930EAD18B5371B0064D41B /* TTMTaskBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 00930EAC18B5371B0064D41B /* TTMTaskBase.m */; };
 		00B4CB9C18B43E8400313DAA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B4CB9B18B43E8400313DAA /* Cocoa.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		00B4CBA618B43E8400313DAA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00B4CBA418B43E8400313DAA /* InfoPlist.strings */; };
 		00B4CBAC18B43E8400313DAA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 00B4CBAA18B43E8400313DAA /* Credits.rtf */; };
@@ -75,6 +75,7 @@
 		00FA1D2A18F1EF4C0066A437 /* RelativeDates.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00FA1D2918F1EF4C0066A437 /* RelativeDates.strings */; };
 		00FB47861A733E6100F8D2B3 /* TTMDocumentStatusBarText.m in Sources */ = {isa = PBXBuildFile; fileRef = 00FB47851A733E6100F8D2B3 /* TTMDocumentStatusBarText.m */; };
 		00FCB2F918DB64510070BD4A /* TTMFilters.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00FCB2F818DB64510070BD4A /* TTMFilters.xib */; };
+		B91D4A36238EE0E2004460E1 /* TTMTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91D4A35238EE0E2004460E1 /* TTMTask.swift */; };
 		B95836682325E83C00CA4337 /* TTMAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95836652325BC4100CA4337 /* TTMAppDelegate.swift */; };
 		B958366A2325FBC200CA4337 /* FontNameTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95836692325FBC200CA4337 /* FontNameTransformer.swift */; };
 		B958366C2326E09500CA4337 /* TTMDateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B958366B2326E09500CA4337 /* TTMDateUtility.swift */; };
@@ -147,8 +148,6 @@
 		0050D6831996AA38008F349B /* TTMTasklistMetadata_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTasklistMetadata_UnitTests.m; sourceTree = "<group>"; };
 		006062D618EC6B0800D147F2 /* NSUserDefaults+myColorSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+myColorSupport.h"; sourceTree = "<group>"; };
 		006062D718EC6B0800D147F2 /* NSUserDefaults+myColorSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+myColorSupport.m"; sourceTree = "<group>"; };
-		0064E6421C9CEE6600B9A6C0 /* NSDate+RelativeDates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+RelativeDates.h"; sourceTree = "<group>"; };
-		0064E6431C9CEE6600B9A6C0 /* NSDate+RelativeDates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+RelativeDates.m"; sourceTree = "<group>"; };
 		006B26451A81C82D00B0E47A /* TTMFindReplace.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTMFindReplace.xib; sourceTree = "<group>"; };
 		006BA79D19DB9CFD00C8F408 /* TTMTasklistMetadata.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTMTasklistMetadata.xib; sourceTree = "<group>"; };
 		007B835D1A5A415300A4D5F7 /* TTMPredicateEditorThresholdRowTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMPredicateEditorThresholdRowTemplate.h; sourceTree = "<group>"; };
@@ -158,8 +157,8 @@
 		0086C98418B54F1A00A427AA /* TTMTableViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTableViewDelegate.m; sourceTree = "<group>"; };
 		00930EA818B536B00064D41B /* RegExCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegExCategories.h; sourceTree = "<group>"; };
 		00930EA918B536B00064D41B /* RegExCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegExCategories.m; sourceTree = "<group>"; };
-		00930EAB18B5371B0064D41B /* TTMTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMTask.h; sourceTree = "<group>"; };
-		00930EAC18B5371B0064D41B /* TTMTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask.m; sourceTree = "<group>"; };
+		00930EAB18B5371B0064D41B /* TTMTaskBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMTaskBase.h; sourceTree = "<group>"; };
+		00930EAC18B5371B0064D41B /* TTMTaskBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTaskBase.m; sourceTree = "<group>"; };
 		00A4E02E18D1569700CEE0A8 /* TodoTxtMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TodoTxtMac.entitlements; sourceTree = "<group>"; };
 		00B4CB9818B43E8400313DAA /* TodoTxtMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoTxtMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00B4CB9B18B43E8400313DAA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -201,6 +200,7 @@
 		00FB47841A733E6100F8D2B3 /* TTMDocumentStatusBarText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMDocumentStatusBarText.h; sourceTree = "<group>"; };
 		00FB47851A733E6100F8D2B3 /* TTMDocumentStatusBarText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMDocumentStatusBarText.m; sourceTree = "<group>"; };
 		00FCB2F818DB64510070BD4A /* TTMFilters.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTMFilters.xib; sourceTree = "<group>"; };
+		B91D4A35238EE0E2004460E1 /* TTMTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTMTask.swift; sourceTree = "<group>"; };
 		B95836622325B9BF00CA4337 /* TodoTxtMac-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "TodoTxtMac-Bridging-Header.h"; path = "TodoTxtMac/TodoTxtMac-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		B95836652325BC4100CA4337 /* TTMAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTMAppDelegate.swift; sourceTree = "<group>"; };
 		B95836692325FBC200CA4337 /* FontNameTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontNameTransformer.swift; sourceTree = "<group>"; };
@@ -281,8 +281,6 @@
 				006062D718EC6B0800D147F2 /* NSUserDefaults+myColorSupport.m */,
 				003F959C1AA2C42700A1FF47 /* NSMutableAttributableString+ColorRegExMatches.h */,
 				003F959D1AA2C42700A1FF47 /* NSMutableAttributableString+ColorRegExMatches.m */,
-				0064E6421C9CEE6600B9A6C0 /* NSDate+RelativeDates.h */,
-				0064E6431C9CEE6600B9A6C0 /* NSDate+RelativeDates.m */,
 				B95836692325FBC200CA4337 /* FontNameTransformer.swift */,
 				B958366B2326E09500CA4337 /* TTMDateUtility.swift */,
 			);
@@ -420,8 +418,9 @@
 		00F811F418D5454900379B99 /* Task Model */ = {
 			isa = PBXGroup;
 			children = (
-				00930EAB18B5371B0064D41B /* TTMTask.h */,
-				00930EAC18B5371B0064D41B /* TTMTask.m */,
+				00930EAB18B5371B0064D41B /* TTMTaskBase.h */,
+				00930EAC18B5371B0064D41B /* TTMTaskBase.m */,
+				B91D4A35238EE0E2004460E1 /* TTMTask.swift */,
 			);
 			name = "Task Model";
 			sourceTree = "<group>";
@@ -580,7 +579,7 @@
 				B95836682325E83C00CA4337 /* TTMAppDelegate.swift in Sources */,
 				002EAE5E18DCAE5C008E7517 /* TTMFilterPredicates.m in Sources */,
 				006062D818EC6B0800D147F2 /* NSUserDefaults+myColorSupport.m in Sources */,
-				00930EAD18B5371B0064D41B /* TTMTask.m in Sources */,
+				00930EAD18B5371B0064D41B /* TTMTaskBase.m in Sources */,
 				00F3961218C6AC010002EA3F /* TTMTableView.m in Sources */,
 				00DA4A1D1D5BBEB600CFF2B1 /* TTMPredicateEditorTextRowTemplate.m in Sources */,
 				0086C98518B54F1A00A427AA /* TTMTableViewDelegate.m in Sources */,
@@ -588,6 +587,7 @@
 				00B4CBAF18B43E8400313DAA /* TTMDocument.m in Sources */,
 				00930EAA18B536B00064D41B /* RegExCategories.m in Sources */,
 				003F959E1AA2C42700A1FF47 /* NSMutableAttributableString+ColorRegExMatches.m in Sources */,
+				B91D4A36238EE0E2004460E1 /* TTMTask.swift in Sources */,
 				00EAAB9718E0C168009CBE8C /* TTMPredicateEditorDateRowTemplate.m in Sources */,
 				00F811EF18D53F7300379B99 /* TTMPreferencesController.m in Sources */,
 				00165B2618DBD1EC00E137B8 /* TTMFiltersController.m in Sources */,

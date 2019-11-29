@@ -238,7 +238,7 @@ extension Date {
         return Calendar.current
     }
     
-    func advanceDateByWeekdays(_ numberOfWeekdays: Int) -> Date {
+    func advanceDate(byWeekdays numberOfWeekdays: Int) -> Date {
         var relativeDate = self
         var weekdaysLeft = numberOfWeekdays
         while weekdaysLeft > 0 {
@@ -254,8 +254,8 @@ extension Date {
         return relativeDate
     }
     
-    func advanceDateByNumberOfCalendarUnits(_ numberOfCalendarUnits: Int, calendarUnit: Calendar.Component) -> Date? {
-        return self.currentCalendar.date(byAdding: calendarUnit, value: numberOfCalendarUnits, to: self)
+    func advanceDate(byNumberOfCalendarUnits numberOfUnits: Int, calendarUnit: Calendar.Component) -> Date? {
+        return self.currentCalendar.date(byAdding: calendarUnit, value: numberOfUnits, to: self)
     }
 
     func isWeekendDay() -> Bool {

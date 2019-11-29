@@ -46,7 +46,7 @@
 
 #import "TTMTableView.h"
 #import "TTMDocument.h"
-#import "TTMTask.h"
+#import "TodoTxtMac-Swift.h"
 
 @implementation TTMTableView
 

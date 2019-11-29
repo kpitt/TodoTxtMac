@@ -45,7 +45,7 @@
  */
 
 #import "TTMPredicateEditorDueRowTemplate.h"
-#import "TTMTask.h"
+#import "TodoTxtMac-Swift.h"
 
 @implementation TTMPredicateEditorDueRowTemplate
 

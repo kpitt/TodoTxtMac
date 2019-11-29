@@ -53,7 +53,7 @@
  * @seealso Todo.txt format specification: 
  * https://github.com/ginatrapani/todo.txt-cli/wiki/The-Todo.txt-Format
  */
-@interface TTMTask : NSObject <NSCopying>
+@interface TTMTaskBase : NSObject <NSCopying>
 
 /*! Defines the three due states of a task: Overdue, Due Today, and Not Due */
 typedef enum : NSUInteger {
@@ -364,8 +364,6 @@ typedef enum : NSUInteger {
  * @abstract Removes the due date from the task's raw text.
  */
 - (void)removeDueDate;
-
-- (TTMTask*)newRecurringTask;
 
 - (void)removeCreationDate;
 

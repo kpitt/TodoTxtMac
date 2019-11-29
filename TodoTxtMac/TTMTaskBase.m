@@ -44,13 +44,12 @@
  * THE SOFTWARE.
  */
 
-#import "TTMTask.h"
+#import "TTMTaskBase.h"
 #import "RegExCategories.h"
 #import "TodoTxtMac-Swift.h"
 #import "NSMutableAttributableString+ColorRegExMatches.h"
-#import "NSDate+RelativeDates.h"
 
-@implementation TTMTask
+@implementation TTMTaskBase
 
 @synthesize rawText=_rawText;
 
@@ -708,8 +707,8 @@ static NSString * const HiddenPattern = @"(?<=^|[ ])(h:1)(?=[ ]|$)";
 
 //MARK: - NSCopying Methods
 
-- (TTMTask*)copyWithZone:(NSZone *)zone {
-    TTMTask *copy = [[self class] allocWithZone:zone];
+- (TTMTaskBase*)copyWithZone:(NSZone *)zone {
+    TTMTaskBase *copy = [[self class] allocWithZone:zone];
     
     if (copy) {
         return [copy initWithRawText:self.rawText withTaskId:self.taskId];
@@ -730,7 +729,7 @@ static NSString * const HiddenPattern = @"(?<=^|[ ])(h:1)(?=[ ]|$)";
     return [self isEqualToTTMTask:object];
 }
 
-- (BOOL)isEqualToTTMTask:(TTMTask*)otherTask {
+- (BOOL)isEqualToTTMTask:(TTMTaskBase*)otherTask {
     if (!otherTask) {
         return NO;
     }
@@ -744,99 +743,7 @@ static NSString * const HiddenPattern = @"(?<=^|[ ])(h:1)(?=[ ]|$)";
     return [self.rawText hash] ^ [@(self.taskId) hash];
 }
 
-//MARK: - Recurrence Methods
-
-- (TTMTask*)newRecurringTask {
-    if (!self.isRecurring) {
-        return nil;
-    }
-    
-    TTMTask *newTask = [self copy];
-    
-    [newTask advanceDueDateBasedOnReccurencePattern:[TTMDateUtility today]];
-    
-    if (_thresholdDateText != nil) {
-        NSInteger numberOfDaysThresholdDateIsBeforeDueDate = 0;
-        if (_dueDateText == nil) {
-            numberOfDaysThresholdDateIsBeforeDueDate = [TTMDateUtility daysBetweenDate:self.thresholdDate andEndDate:[TTMDateUtility today]];
-        } else if (_dueDateText != nil && _thresholdDateText != nil) {
-            numberOfDaysThresholdDateIsBeforeDueDate = [TTMDateUtility daysBetweenDate:self.thresholdDate andEndDate:self.dueDate];
-        }
-        if (numberOfDaysThresholdDateIsBeforeDueDate < 0) {
-            numberOfDaysThresholdDateIsBeforeDueDate = 0;
-        }
-        [newTask setThresholdDateBasedDaysBetweenThresholdDateAndDueDate:numberOfDaysThresholdDateIsBeforeDueDate];
-    }
-
-    return newTask;
-}
-
-- (void)advanceDueDateBasedOnReccurencePattern:(NSDate*)completionDate {
-    NSDate *oldDueDate;
-    if (_dueDateText == nil || ![self recurrencePatternIsStrict]) {
-        oldDueDate = completionDate;
-    } else {
-        oldDueDate = self.dueDate;
-    }
-    NSDate *newDueDate = [self relativeDateBasedOnRecurrencePattern:oldDueDate];
-    [self setDueDate:newDueDate];
-}
-
-- (void)setThresholdDateBasedDaysBetweenThresholdDateAndDueDate:(NSInteger)daysBetweenThresholdAndDueDates {
-    NSInteger dateAdjustment = (daysBetweenThresholdAndDueDates > 0) ? -1 * daysBetweenThresholdAndDueDates : 0;
-    NSDate* newThresholdDate = [self.dueDate advanceDateByNumberOfCalendarUnits:dateAdjustment calendarUnit:NSCalendarUnitDay];
-    [self setThresholdDate:newThresholdDate];
-}
-
-- (BOOL)recurrencePatternIsStrict {
-    return [self.recurrencePattern hasPrefix:@"+"];
-}
-
-- (NSCalendarUnit)calendarUnitFromRecurrencePattern {
-    if (!self.recurrencePattern) {
-        return NSCalendarUnitEra; // not a real return value
-    }
-    
-    NSString *lastChar = [[self.recurrencePattern uppercaseString] substringFromIndex:self.recurrencePattern.length - 1];
-    if ([lastChar isEqualToString:@"D"]) {
-        return NSCalendarUnitDay;
-    }
-    if ([lastChar isEqualToString:@"W"]) {
-        return NSCalendarUnitWeekOfYear;
-    }
-    if ([lastChar isEqualToString:@"M"]) {
-        return NSCalendarUnitMonth;
-    }
-    if ([lastChar isEqualToString:@"Y"]) {
-        return NSCalendarUnitYear;
-    }
-    if ([lastChar isEqualToString:@"B"]) {
-        return NSCalendarUnitWeekday;
-    }
-    
-    return NSCalendarUnitEra; // not a real return value
-}
-
-- (NSUInteger)numberOfCalendarUnitsFromRecurrencePattern {
-    NSUInteger rangeStart = [self recurrencePatternIsStrict] ? 1 : 0;
-    NSUInteger rangeEnd = self.recurrencePattern.length - 1;
-    NSRange rng = NSMakeRange(rangeStart, rangeEnd);
-    return [[self.recurrencePattern substringWithRange:rng] integerValue];
-}
-
-- (NSDate*)relativeDateBasedOnRecurrencePattern:(NSDate*)date {
-    NSCalendarUnit calendarUnit = [self calendarUnitFromRecurrencePattern];
-    if (calendarUnit == NSCalendarUnitEra) {
-        return nil;
-    }
-    
-    NSInteger numberOfCalendarUnits = [self numberOfCalendarUnitsFromRecurrencePattern];
-    if (calendarUnit == NSCalendarUnitWeekday) {
-        return [date advanceDateByWeekdays:numberOfCalendarUnits];
-    } else {
-        return [date advanceDateByNumberOfCalendarUnits:numberOfCalendarUnits calendarUnit:calendarUnit];
-    }
-}
+//MARK: - Creation Date Methods
 
 - (void)removeCreationDate {
     // Blank and tasks without a threshold date do not get updated.

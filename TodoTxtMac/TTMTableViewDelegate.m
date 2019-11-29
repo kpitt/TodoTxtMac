@@ -46,8 +46,8 @@
 
 #import "TTMTableViewDelegate.h"
 #import "RegExCategories.h"
-#import "TTMTask.h"
 #import "NSUserDefaults+myColorSupport.h"
+#import "TodoTxtMac-Swift.h"
 
 @implementation TTMTableViewDelegate
 

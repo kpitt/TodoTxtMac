@@ -45,7 +45,7 @@
  */
 
 #import "TTMFilterPredicates.h"
-#import "TTMTask.h"
+#import "TodoTxtMac-Swift.h"
 
 @implementation TTMFilterPredicates
 
